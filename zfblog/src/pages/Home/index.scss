@@ -1,0 +1,16 @@
+.home{
+    .updatetitle{
+        color: white;
+        font-size: 16px;
+        line-height: 40px;
+        padding-left: 5px;
+        height: 40px;
+        background-color: rgb(48, 49, 51);
+        span{
+            font-size: 14px;
+            float: right;
+            margin-right:10px;
+            cursor: pointer;
+        }
+    }
+}
