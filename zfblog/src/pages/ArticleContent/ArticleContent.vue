@@ -121,7 +121,6 @@
             </div>
             <!-- <Footer></Footer> -->
         </div>
-        
     </div>
     <div class="reward" :class="{showreward:isshowreward}" @click="isshowreward=false">
         <div class="rewardbox" @click.stop :class="{showrewardbox:isshowreward}">

@@ -10,6 +10,8 @@
     "@ant-design/icons-vue": "^6.0.1",
     "ant-design-vue": "^2.2.8",
     "element-plus": "^1.2.0-beta.2",
+    "mavon-editor": "^2.10.4",
+    "md-editor-v3": "^1.10.2",
     "v-emoji-picker": "^2.3.3",
     "vue": "^3.2.16",
     "vue-router": "^4.0.0-beta.13",

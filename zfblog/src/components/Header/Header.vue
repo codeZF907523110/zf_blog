@@ -24,9 +24,35 @@
             <template #icon><UserOutlined /></template>
           </a-avatar> -->
       </div>
-      <div class="writebutton" @click="router.push('/writearticle')">
-          写文章
+      <div class="writebutton" style="right:150px">
+          我 的 草 稿
       </div>
+      <div class="writebutton" @click="dialogVisible = true">
+          写 文 章
+      </div>
+        <el-dialog
+            v-model="dialogVisible"
+            title="选择编写形式"
+            width="30%"
+            :before-close="handleClose"
+        >
+            <div class="cover" style="margin-bottom:-20px">
+                <div class="coverradio">
+                    <a-radio-group v-model:value="editType">
+                        <a-radio :value="1">普通文本</a-radio>
+                        <a-radio :value="2">Markdown</a-radio>
+                    </a-radio-group>
+                </div>
+            </div>
+            <template #footer>
+            <span class="dialog-footer">
+                <el-button @click="dialogVisible = false">取消</el-button>
+                <el-button type="primary" @click="determineType"
+                >确定</el-button
+                >
+            </span>
+            </template>
+        </el-dialog>
     </div>
 </template>
 
@@ -73,6 +99,16 @@ const headers=[
 ]
 const headersIcons=[]
 
+const dialogVisible = ref(false)
+
+let editType=ref(1)
+
+const handleClose = (done) => {
+    done()
+}
+function determineType(){
+    editType.value===1?router.push('/writearticle'):router.push('/writemarkdown')
+}
 function onSearch(){
 
 };
@@ -117,7 +153,9 @@ onMounted(()=>{
             top: 50%;
             transform: translateY(-50%);
             color: white;
-            width: 80px;
+            padding-left: 10px;
+            padding-right: 10px;
+            // width: 80px;
             height: 40px;
             line-height: 40px;
             text-align: center;

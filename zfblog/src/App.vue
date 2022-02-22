@@ -1,6 +1,14 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-02-22 10:16:06
+ * @LastEditTime: 2022-02-22 10:34:29
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /zf_blog/zfblog/src/App.vue
+-->
 <template>
   <div class='homeback'>
-      <img src="./assets/img/homeback.jpg" alt="">
+      <!-- <img src="./assets/img/homeback.jpg" alt=""> -->
   </div>
   <router-view></router-view>
 </template>
