@@ -120,6 +120,7 @@ async function headersRouter(index){
     switch(index){
         case 0:router.push('/display/home');break;
         case 1:router.push('/display/technology');break;
+        case 2:router.push('/studynotes');break;
         case 3:router.push('/display/mydiary');break;
         case 6:router.push('/display/messageboard');break;
     }

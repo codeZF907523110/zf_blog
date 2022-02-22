@@ -74,15 +74,6 @@
                     </div>
                 </div>
                 <div class="cover">
-                    <div class="texttitle" style="">编写形式:</div>
-                    <div class="coverradio">
-                        <a-radio-group v-model:value="editType">
-                            <a-radio :value="1">普通文本</a-radio>
-                            <a-radio :value="2">Markdown</a-radio>
-                        </a-radio-group>
-                    </div>
-                </div>
-                <div class="cover">
                     <div class="texttitle" style="">文章类型:</div>
                     <div class="coverradio">
                         <a-radio-group v-model:value="articletype">
@@ -143,7 +134,6 @@ let isshowtitles=ref(false)
 const itemindex=ref(0)
 let articletype=ref(1)
 let jurisdiction=ref(1)
-let editType=ref(1)
 const lableitems=[
     [],
     ['python','list','django','virtualenv','tornado','flask'],
