@@ -1,6 +1,6 @@
 <template>
     <div class="writealticle">
-        <div class="settitle" :class="{hidesettitle:!isopentitle}">
+        <!-- <div class="settitle" :class="{hidesettitle:!isopentitle}">
             <div class="titlecenter">
                 <div class="inputtitle">
                     <a-input :bordered="false" placeholder="请输入文章标题(5~100个字)" />
@@ -106,17 +106,15 @@
                 </div>
                 
             </div>
-            <div class="settitlebottom">
-                <div class="titleboben">保存草稿</div>
-                <div class="titleboben">发布博客</div>
-            </div>
+            <save-article></save-article>
             <div class="opensettitle" @click="opensettitle" :class="{openrotatelocal:isopentitles}">
                 <svg t="1642061786507" :class="{openrotate:!isopentitle}" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2287" width="200" height="200"><path d="M245.71 927m-41.47 0l0 0q-41.47 0-41.47-41.47l0-747.06q0-41.47 41.47-41.47l0 0q41.47 0 41.47 41.47l0 747.06q0 41.47-41.47 41.47Z" fill="#dbdbdb" p-id="2288"></path><path d="M424.09 856.83L782.44 512 424.09 167.17a40.31 40.31 0 0 1-12.5-29c0-36.58 46-54.9 72.83-29l358.36 344.77c33.32 32.07 33.32 84.05 0 116.12L484.42 914.89c-26.87 25.87-72.83 7.55-72.83-29a40.31 40.31 0 0 1 12.5-29.06z" fill="#dbdbdb" p-id="2289"></path></svg>
             </div>
-        </div>
+        </div> -->
         <div class="wangeditor" :class="{wangeditorlocal:!isopentitle}">
 
         </div>
+        <save-article style="width:880px"></save-article>
     </div>
     <div class="develop" :class="{showbtn:!isopentitle}" @click="isopentitle=true">
         <svg t="1642061786507" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2287" width="200" height="200"><path d="M245.71 927m-41.47 0l0 0q-41.47 0-41.47-41.47l0-747.06q0-41.47 41.47-41.47l0 0q41.47 0 41.47 41.47l0 747.06q0 41.47-41.47 41.47Z" fill="#dbdbdb" p-id="2288"></path><path d="M424.09 856.83L782.44 512 424.09 167.17a40.31 40.31 0 0 1-12.5-29c0-36.58 46-54.9 72.83-29l358.36 344.77c33.32 32.07 33.32 84.05 0 116.12L484.42 914.89c-26.87 25.87-72.83 7.55-72.83-29a40.31 40.31 0 0 1 12.5-29.06z" fill="#dbdbdb" p-id="2289"></path></svg>
@@ -127,6 +125,7 @@
 <script setup>
 import { onMounted, onUpdated, reactive, ref, watch } from '@vue/runtime-core'
 import E from 'wangeditor'
+import SaveArticle from './components/saveArticle.vue';
 
 let editor=reactive({});
 let isopentitle=ref(true)
@@ -531,58 +530,16 @@ onMounted(()=>{
             }
             
         }
-        .settitlebottom{
-            height: 64px;
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            border-top: 1px solid #e8e8e8;
-            background-color: #fff;
-            .titleboben{
-                width: 100px;
-                height: 35px;
-                border:1px solid #555666;
-                color: #555666;
-                border-radius: 50px;
-                text-align: center;
-                line-height: 35px;
-                cursor: pointer;
-                float: left;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 14px;
-                cursor: pointer;
-                transition: 0.3s;
-            }
-            .titleboben:first-child{
-                right: 130px;
-            }
-            .titleboben:first-child:hover{
-                border:1px solid #000;
-                color: #000;
-            }
-            .titleboben:last-child{
-                right: 10px;
-                color: #fff;
-                border: none;
-                white-space: nowrap;
-                background: #fc5531;
-            }
-            .titleboben:last-child:hover{
-                background: #fc1944;
-            }
-        }
+
     }
     .wangeditor{
         width: 880px;
-        height: 100vh;
+        height: calc(100% - 65px);
         // justify-self: flex-end;
         display: flex;
         flex-direction: column;
-        transition:1s;
-        position: relative;
-        right: 0;
+        margin: 0 auto;
+        
     }
 }
 .openrotate{
