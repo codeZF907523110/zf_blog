@@ -1,3 +1,11 @@
+<!--
+ * @Author: 流觞曲水 907523110@qq.com
+ * @Date: 2022-10-15 20:30:45
+ * @LastEditors: 流觞曲水 907523110@qq.com
+ * @LastEditTime: 2022-10-15 20:45:38
+ * @FilePath: /zf-blog/src/pages/MyDiary/MyDiary.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
     <div class="mydiary">
         <div class="allmydiary">
@@ -16,7 +24,7 @@ import { useRouter } from 'vue-router'
 import Diaryitem from '../../components/Diaryitem/Diaryitem.vue';
 import './index.scss'
 const router = useRouter();
-const routerpath=router.currentRoute.value.path
+const routerPath=router.currentRoute.value.path
 onMounted(()=>{
     
     setTimeout(() => {

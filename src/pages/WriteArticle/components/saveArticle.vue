@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2022-02-23 10:24:34
- * @LastEditTime: 2022-02-23 14:22:25
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-10-15 20:47:44
+ * @LastEditors: 流觞曲水 907523110@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/pages/WriteArticle/components/saveDraft.vue
 -->
@@ -38,7 +38,7 @@
                 <!-- <a-space>
                     <a-select
                     ref="select"
-                    v-model:value="ificationvalue"
+                    v-model:value="ificAtionValue"
                     style="width: 200px"
                     @focus="focus"
                     @change="handleChange"
@@ -46,7 +46,7 @@
                         <a-select-option v-for="item in classification" :key="item.id" :value="item">{{item}}</a-select-option>
                     </a-select>
                 </a-space> -->
-                <el-select v-model="ificationvalue" class="m-2" size="small">
+                <el-select v-model="ificAtionValue" class="m-2" size="small">
                         <el-option
                         v-for="item in classification"
                         :key="item"
@@ -60,27 +60,27 @@
             <div class="covertitle cover">
                 <div class="texttitle" style="margin-right:30px">文章标签:</div>
                 <div>
-                    <span class="checklables" v-for="(item,index) in checklables" :key="item.id">{{item}}
-                        <i @click="removeitem(index)">
-                            <svg t="1642077566319" @click="isshowtitles=false" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2137" width="200" height="200"><path d="M594.983303 512.554066l411.9697 411.9697a58.304836 58.304836 0 0 1-82.428037 82.428036L512.555267 594.982103 100.585567 1006.951802a58.304836 58.304836 0 0 1-82.428036-82.428036L430.127231 512.554066 18.157531 100.584367A58.304836 58.304836 0 1 1 100.585567 18.156331L512.555267 430.12603 924.524966 18.156331a58.304836 58.304836 0 0 1 82.428037 82.428036L594.983303 512.554066z" p-id="2138"></path></svg>
+                    <span class="checkLabels" v-for="(item,index) in checkLabels" :key="item.id">{{item}}
+                        <i @click="removeItem(index)">
+                            <svg t="1642077566319" @click="isShowTitles=false" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2137" width="200" height="200"><path d="M594.983303 512.554066l411.9697 411.9697a58.304836 58.304836 0 0 1-82.428037 82.428036L512.555267 594.982103 100.585567 1006.951802a58.304836 58.304836 0 0 1-82.428036-82.428036L430.127231 512.554066 18.157531 100.584367A58.304836 58.304836 0 1 1 100.585567 18.156331L512.555267 430.12603 924.524966 18.156331a58.304836 58.304836 0 0 1 82.428037 82.428036L594.983303 512.554066z" p-id="2138"></path></svg>
                         </i>
                     </span>
-                    <div class="coverbtn" @click="showtitles">
+                    <div class="coverbtn" @click="showTitles">
                         +&nbsp;<span class="coverbtntxt">添加文章标题</span> 
                     </div>
                 </div>
                 
-                <div class="titles" :class="{showtitles:isshowtitles}">
+                <div class="titles" :class="{showTitles:isShowTitles}">
                     <div class="titletop">标签
-                        <svg t="1642077566319" @click="isshowtitles=false" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2137" width="200" height="200"><path d="M594.983303 512.554066l411.9697 411.9697a58.304836 58.304836 0 0 1-82.428037 82.428036L512.555267 594.982103 100.585567 1006.951802a58.304836 58.304836 0 0 1-82.428036-82.428036L430.127231 512.554066 18.157531 100.584367A58.304836 58.304836 0 1 1 100.585567 18.156331L512.555267 430.12603 924.524966 18.156331a58.304836 58.304836 0 0 1 82.428037 82.428036L594.983303 512.554066z" fill="#5e5f5d" p-id="2138"></path></svg>
+                        <svg t="1642077566319" @click="isShowTitles=false" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2137" width="200" height="200"><path d="M594.983303 512.554066l411.9697 411.9697a58.304836 58.304836 0 0 1-82.428037 82.428036L512.555267 594.982103 100.585567 1006.951802a58.304836 58.304836 0 0 1-82.428036-82.428036L430.127231 512.554066 18.157531 100.584367A58.304836 58.304836 0 1 1 100.585567 18.156331L512.555267 430.12603 924.524966 18.156331a58.304836 58.304836 0 0 1 82.428037 82.428036L594.983303 512.554066z" fill="#5e5f5d" p-id="2138"></path></svg>
                     </div>
                     <div class="titlebottom">
                         <div class="lableserch">
                             <input type="text" placeholder="请输入文字搜索,Enter键入可添加自定义标签">
                         </div>
-                        <div class="lablemenus" style="display:flex;">
+                        <div class="labelMenus" style="display:flex;">
                             <div class="lablemenu">
-                                <div class="menuitems" v-for="(item,index) in lablemenus" :key="item.id" @click="changeitemindex(index)">{{item}}</div>
+                                <div class="menuitems" v-for="(item,index) in labelMenus" :key="item.id" @click="changeItemIndex(index)">{{item}}</div>
                             </div>
                             <div class="alllable">
                                 <div style="height: 20px;
@@ -91,7 +91,7 @@
                                     >
                                     添加标签
                                 </div>
-                                <span class="labletitles" v-for="item in lableitems[itemindex]" :key="item.id" @click="addcheckitem(item)">{{item}}</span>
+                                <span class="labletitles" v-for="item in labelItems[itemIndex]" :key="item.id" @click="addCheckItem(item)">{{item}}</span>
                                 
                             </div>
                         </div>
@@ -102,12 +102,12 @@
             <div class="cover">
                 <div class="texttitle" style="">文章类型:</div>
                 <div class="coverradio">
-                    <a-radio-group v-model:value="articletype">
+                    <a-radio-group v-model:value="articleType">
                         <a-radio :value="1">原创</a-radio>
                         <a-radio :value="2">转载</a-radio>
                         <a-radio :value="3">翻译</a-radio>
                     </a-radio-group>
-                    <div style="margin-top:10px;" v-show="articletype===2||articletype===3">
+                    <div style="margin-top:10px;" v-show="articleType===2||articleType===3">
                         <input style="height: 32px;
                                     width: 500px;
                                     border-radius: 5px;
@@ -150,12 +150,12 @@
 <script setup>
 import { ref } from 'vue'
 const dialogVisible = ref(false)
-let isopentitle=ref(true)
-let isshowtitles=ref(false)
-const itemindex=ref(0)
-let articletype=ref(1)
+let isOpenTitle=ref(true)
+let isShowTitles=ref(false)
+const itemIndex=ref(0)
+let articleType=ref(1)
 let jurisdiction=ref(1)
-const lableitems=[
+const labelItems=[
     [],
     ['python','list','django','virtualenv','tornado','flask'],
     ['eclipse','java','tomcat','jar','hibernate','spring','maven','struts','intellij-idea','java-ee'],
@@ -168,40 +168,43 @@ const lableitems=[
     ['java','golang','rust','nodejs','c++','c语言','php','spring'],
     ['golang','docker','中间件']
 ]
-const lablemenus=[
+const labelMenus=[
 '推介','Python','Java','编程语言','开发工具','数据结构预算法','大数据','数据库管理','前端','后端','移动开发','Android','iOS','人工智能','网络','嵌入式',
 'PHP','游戏','开放平台','HarmonyOS','微软技术','扩展屏应用开发','小程序','操作系统','搜索','设计模式','测试','云计算','软件工程','区块链','数学','运维',
 '安全','服务器','职场和发展','C站认证','产品/运营','设计','其它'
 ]
 const classification=ref(['技术专区','我的随笔','兴趣爱好'])
-let ificationvalue=ref('技术专区')
-let checklables=ref([])
+let ificAtionValue=ref('技术专区')
+let checkLabels=ref([])
 const handleClose = (done) => {
     done()
 }
-function showtitles(){
-    isshowtitles.value=!isshowtitles.value
+function showTitles(){
+    isShowTitles.value=!isShowTitles.value
 }
-function changeitemindex(index){
-    itemindex.value=index
+function changeItemIndex(index){
+    itemIndex.value=index
 }
-var addcheckitem=(item)=>{
-    if(!checklables.value.includes(item)){
-        if(checklables.value.length<5){
-            checklables.value.push(item)
+var addCheckItem=(item)=>{
+    if(!checkLabels.value.includes(item)){
+        if(checkLabels.value.length<5){
+            checkLabels.value.push(item)
         }
     }
 }
-var removeitem=(index)=>{
-    checklables.value.splice(index,1)
+var removeItem=(index)=>{
+    checkLabels.value.splice(index,1)
 }
 </script>
 
 <style lang="scss">
+.showTitles{
+  height: 460px!important;
+  visibility: visible!important;
+}
 .titlecenter{
     width: 90%;
     height: 500px;
-    overflow: hidden;
     height: 100%;
     padding-bottom:30px;
     .inputtitle{
@@ -219,7 +222,6 @@ var removeitem=(index)=>{
         overflow:hidden;
         font-size: 14px;
         color: #606266;
-        flex-shrink:0;
         flex-grow:0;
     }
     .cover{
@@ -257,7 +259,6 @@ var removeitem=(index)=>{
             border-color: #c0c4cc;
             border-radius: 5px;
             flex-grow:0;
-            flex-shrink:0;
             textarea{
                 border: 0!important;
                 outline: none!important;
@@ -282,7 +283,6 @@ var removeitem=(index)=>{
             font-size: 13px;
             color: #555666;
             position: relative;
-            
         }
         .coverbtn:hover{
             color: #3f8ed8;
@@ -303,8 +303,8 @@ var removeitem=(index)=>{
             width: 500px;
             border:1px solid #e3e3e3;
             position: absolute;
-            top: -300px;
-            left:300px;
+            top: -460px;
+            left:0;
             z-index: 1000;
             background-color: white;
             box-shadow: 0 2px 6px 0 rgb(0 0 0 / 10%);
@@ -353,7 +353,7 @@ var removeitem=(index)=>{
                         color: rgb(180, 179, 179);
                     }
                 }
-                .lablemenus{
+                .labelMenus{
                     height: 95%;
                     margin-top: 10px;
                     .lablemenu{
@@ -410,7 +410,7 @@ var removeitem=(index)=>{
                 }
             }
         }
-        .checklables{
+        .checkLabels{
             color: #267dcc;
             background: rgba(38,125,204,.05);
             height: 28px;
