@@ -1,5 +1,5 @@
 <template>
-    <div class='homeheader' :class="{hideheader:ishideheader}">
+    <div class='homeheader' :class="{hideheader:isHideHeader}">
         <!-- <div class='homelogo'>
             <svg t="1636371956577" fill="#fff" class="icon" viewBox="0 0 1562 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11300" width="200" height="200"><path d="M581.213562 416.634082L492.686335 145.190665 377.255247 361.173052l-62.976075-1.503009-94.689564-215.982387-139.479231 298.497578s-55.46103 137.976222 31.563188 215.982387 146.994276 105.060326 146.994276 105.060326l831.01365-4.509027s146.994276-97.545281 166.533392-166.533392 43.436959-220.491413 43.436959-220.491414l1.503009-318.036694-220.491413-1.503009s-125.95215 76.503156-37.575224 196.44327c40.430941 33.066197 47.945986 50.952004 178.557463 25.551152 3.006018 64.479084 28.55717 168.036401-33.066197 304.509614H1050.603258l-1.503008-79.509174-55.461031-31.563188 3.006018 160.521357 137.976222-1.503009 19.539116 13.52708-70.49112 52.455013-817.486569 1.503009s-243.036548-76.503156-50.952004-385.521797l61.473066 106.563335 145.491267-1.503009 68.988111-100.551299 25.551152 105.060326 64.479084-1.503009z" p-id="11301"></path><path d="M821.093791 362.67606l-1.503009 266.934391h135.120505l-1.503009-70.49112-65.982093 1.503009-1.503009-168.036401zM761.123734 335.621899l-53.958021 49.599296v242.886247l58.467048-1.503009zM678.608542 398.597974l-3.45692 3.456921-229.058565 227.555556h109.569353l128.958168-134.970204 0.450903-101.904007" p-id="11302"></path><path d="M1141.986203 163.978277m-72.294731 0a72.294731 72.294731 0 1 0 144.589462 0 72.294731 72.294731 0 1 0-144.589462 0Z" p-id="11303"></path></svg>
         </div> -->
@@ -104,7 +104,7 @@ import {CaretUpOutlined} from '@ant-design/icons-vue';
 import { useRouter } from 'vue-router'
 const router = useRouter();
 import $store from "../../store/index";
-let ishideheader=ref(false)
+let isHideHeader=ref(false)
 let isLogin=ref(false)
 let isShowLoginBox=ref(false)
 const headers=[
@@ -178,9 +178,9 @@ onMounted(()=>{
     window.addEventListener('scroll',()=>{
         var scrotop=document.documentElement.scrollTop -Math.ceil(document.documentElement.scrollTop / 10);
         if(scrotop>=80){
-            ishideheader.value=true
+            isHideHeader.value=true
         }else{
-            ishideheader.value=false
+            isHideHeader.value=false
         }
         console.log();
     })

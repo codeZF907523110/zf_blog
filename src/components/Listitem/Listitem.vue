@@ -1,7 +1,7 @@
 
 <template>
   <div class='listitem' @click="router.push('/display/articlecontent')" v-if="initSuccess">
-      <div v-if="!contentload" style="display:flex">
+      <div v-if="!contentLoad" style="display:flex">
         <el-skeleton animated>
             <template #template>
                 <div style="display:flex;">
@@ -45,7 +45,7 @@
 import { ref,reactive, onMounted,defineProps } from 'vue';
 import  {LikeOutlined} from '@ant-design/icons-vue';
 import { useRouter } from 'vue-router'
-var contentload=ref(true)
+var contentLoad=ref(true)
 let initSuccess=ref(false)
 const router = useRouter();
 const props=defineProps({
