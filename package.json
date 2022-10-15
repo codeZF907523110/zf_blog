@@ -1,0 +1,30 @@
+{
+  "name": "zfblog",
+  "version": "0.0.0",
+  "scripts": {
+    "serve": "vite preview",
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.0.1",
+    "ant-design-vue": "^2.2.8",
+    "element-plus": "^1.2.0-beta.2",
+    "mavon-editor": "^2.10.4",
+    "md-editor-v3": "^1.10.2",
+    "v-emoji-picker": "^2.3.3",
+    "vue": "^3.2.16",
+    "vue-router": "^4.0.0-beta.13",
+    "vuex": "^4.0.2",
+    "wangeditor": "^4.7.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/compiler-sfc": "^3.0.0-beta.1",
+    "node-sass": "^6.0.1",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "vite": "^2.6.4",
+    "vue-cli-plugin-vue-next": "~0.1.4"
+  }
+}

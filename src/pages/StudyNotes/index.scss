@@ -1,0 +1,69 @@
+.studynotes{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+   
+    .studynavigation{
+        width: 100%;
+        height: 60px!important;
+        border-bottom: 1px solid #eaecef;
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .notes{
+        // width: 100%;
+        height:100%;
+        flex:1;
+        .notesmenus{
+            width: 300px;
+            background-color: white;
+            border-right: 1px solid #eaecef;
+            overflow: auto;
+            float: left;
+            height: calc(100vh - 60px);
+            position: sticky;
+            top: 60px;
+        }
+        .notescontent{
+            width: calc(100% - 300px);
+            float: left;
+            background-color: white;
+            position: relative;
+            height: 100%;
+            .notescontentcenter{
+                max-width: 740px;
+                margin: 0 auto;
+                // height: 1000px;
+                .contentcenterbottom{
+                    display: flex;
+                    justify-content: space-between;
+                    height:60px;
+                    line-height: 60px;
+                    font-size: 18px;
+                    font-weight: 800;
+                    div{
+                        display: flex;
+                        align-items: center;
+                        svg{
+                            width:20px;
+                            height: 20px;
+                        }
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+    }
+    .shownotemenu {
+        transition: 4s;
+        max-height: 1000px!important;
+    }
+    .hidenotemenu{
+        transition:0.4s;
+        max-height:0px!important;
+    }
+}
