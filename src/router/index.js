@@ -1,23 +1,23 @@
 /*
  * @Author: your name
  * @Date: 2022-02-22 10:16:06
- * @LastEditTime: 2022-02-22 15:07:45
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-10-17 10:17:20
+ * @LastEditors: 流觞曲水 907523110@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/router/index.js
  */
 import { createRouter,createWebHashHistory} from "vue-router";
-const display = () => import("../pages/Display/display.vue")
-const home=()=> import("../pages/Home/Home.vue") 
-const technology=()=> import("../pages/Technology/Technology.vue")
-const messageboard=()=> import("../pages/Messageboard/MessageBoard.vue")
-const writearhome=()=> import("../pages/WriteArticle/WriteHome.vue")
-const writearticle=()=> import("../pages/WriteArticle/WriteArticle.vue")
-const writemarkdown=()=> import("../pages/WriteArticle/WriteMarkdown.vue")
-const articlecontent=()=>import("../pages/ArticleContent/ArticleContent.vue")
-const mydiary=()=>import("../pages/MyDiary/MyDiary.vue")
-const mydiarycontent=()=>import("../pages/MyDiary/MyDiaryContent.vue")
-const studynotes=()=>import("../pages/StudyNotes/StudyNotes.vue")
+const display = () => import("@pages/Display/display.vue")
+const home=()=> import("@pages/Home/Home.vue") 
+const techNology=()=> import("@pages/techNology/techNology.vue")
+const messageBoard=()=> import("@pages/messageBoard/messageBoard.vue")
+const writeHome=()=> import("@pages/writeArticle/writeHome.vue")
+const writeArticle=()=> import("@pages/writeArticle/writeArticle.vue")
+const writeMarkdown=()=> import("@pages/writeArticle/writeMarkdown.vue")
+const articleContent=()=>import("@pages/articleContent/articleContent.vue")
+const myDiary=()=>import("@pages/myDiary/myDiary.vue")
+const myDiaryContent=()=>import("@pages/myDiary/myDiaryContent.vue")
+const studyNotes=()=>import("@pages/studyNotes/studyNotes.vue")
 const routes = [
     {
       path:'/',
@@ -32,38 +32,38 @@ const routes = [
           component:home
         },
         {
-          path:'technology',
-          component:technology
+          path:'techNology',
+          component:techNology
         },
         {
-          path:'messageboard',
-          component:messageboard
+          path:'messageBoard',
+          component:messageBoard
         },
         {
-          path:'articlecontent',
-          component:articlecontent
+          path:'articleContent',
+          component:articleContent
         },
         {
-          path:'mydiary',
-          component:mydiary
+          path:'myDiary',
+          component:myDiary
         },
         {
-          path:'mydiarycontent',
-          component:mydiarycontent
+          path:'myDiaryContent',
+          component:myDiaryContent
         }
       ]
     },
     {
-      path:'/writearticle',
-      component:writearticle
+      path:'/writeArticle',
+      component:writeArticle
     },
     {
-      path:'/writemarkdown',
-      component:writemarkdown
+      path:'/writeMarkdown',
+      component:writeMarkdown
     },
     {
-      path:'/studynotes',
-      component:studynotes
+      path:'/studyNotes',
+      component:studyNotes
     }
 ]
 const router = createRouter({
