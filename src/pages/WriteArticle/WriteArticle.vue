@@ -6,7 +6,7 @@
         <save-article style="width:880px"></save-article>
     </div>
     <div class="develop" :class="{showbtn:!isOpenTitle}" @click="isOpenTitle=true">
-        <svg t="1642061786507" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2287" width="200" height="200"><path d="M245.71 927m-41.47 0l0 0q-41.47 0-41.47-41.47l0-747.06q0-41.47 41.47-41.47l0 0q41.47 0 41.47 41.47l0 747.06q0 41.47-41.47 41.47Z" fill="#dbdbdb" p-id="2288"></path><path d="M424.09 856.83L782.44 512 424.09 167.17a40.31 40.31 0 0 1-12.5-29c0-36.58 46-54.9 72.83-29l358.36 344.77c33.32 32.07 33.32 84.05 0 116.12L484.42 914.89c-26.87 25.87-72.83 7.55-72.83-29a40.31 40.31 0 0 1 12.5-29.06z" fill="#dbdbdb" p-id="2289"></path></svg>
+      <svg t="1642061786507" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2287" width="200" height="200"><path d="M245.71 927m-41.47 0l0 0q-41.47 0-41.47-41.47l0-747.06q0-41.47 41.47-41.47l0 0q41.47 0 41.47 41.47l0 747.06q0 41.47-41.47 41.47Z" fill="#dbdbdb" p-id="2288"></path><path d="M424.09 856.83L782.44 512 424.09 167.17a40.31 40.31 0 0 1-12.5-29c0-36.58 46-54.9 72.83-29l358.36 344.77c33.32 32.07 33.32 84.05 0 116.12L484.42 914.89c-26.87 25.87-72.83 7.55-72.83-29a40.31 40.31 0 0 1 12.5-29.06z" fill="#dbdbdb" p-id="2289"></path></svg>
     </div>
     <!-- <button @click="getcontent">获取内容</button> -->
 </template>

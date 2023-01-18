@@ -1,3 +1,11 @@
+/*
+ * @Author: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @Date: 2022-12-20 14:54:58
+ * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @LastEditTime: 2023-01-11 10:52:12
+ * @FilePath: /zf-blog/vite.config.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 const path = require('path')
@@ -5,19 +13,6 @@ import { resolve } from 'path' // 主要用于alias文件路径别名
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  // 是否开启 https
-  https: false,
-  // 服务端渲染
-  ssr: false,
-  /**
-   * 在生产中服务时的基本公共路径。
-   * @default '/'
-   */
-  base: './',
-  /**
-   * 与“根”相关的目录，构建输出将放在其中。如果目录存在，它将在构建之前被删除。
-   * @default 'dist'
-   */
   outDir: 'dist',
   resolve: {
     alias: {
@@ -30,21 +25,11 @@ export default defineConfig({
       '@assets': resolve(__dirname, './src/assets')
     },
   },
-  // 反向代理
   server: {
     port: 5000,
-    host: "0.0.0.0",
-    // 是否自动在浏览器打开
-    open: true,
-    // 是否开启 https
+    host: '0.0.0.0',
     https: false,
-    proxy: {
-      '/api': {
-        target: 'https://blog.csdn.net/weixin_45292658',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
+    hmr: true
   },
 })
 

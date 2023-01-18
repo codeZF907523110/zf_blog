@@ -1,8 +1,8 @@
 <!--
  * @Author: 流觞曲水 907523110@qq.com
  * @Date: 2022-10-15 20:30:45
- * @LastEditors: 流觞曲水 907523110@qq.com
- * @LastEditTime: 2022-10-15 20:45:11
+ * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @LastEditTime: 2023-01-17 16:56:27
  * @FilePath: /zf-blog/src/pages/Display/Display.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -19,13 +19,17 @@
                         <el-breadcrumb-item>技术专区</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
-                <router-view></router-view>
+                <router-view v-slot="{ Component }">
+                  <keep-alive>
+                    <component :is="Component" />
+                  </keep-alive>
+                </router-view>
             </div>
             <div class='alticleright'>
-                <Myinfo></Myinfo>
-                <Siteinfo style="margin-top:10px"></Siteinfo>
-                <Newmessage style="margin-top:10px"></Newmessage>
-                <Lables style="margin-top:10px"></Lables>
+                <Myinfo />
+                <Siteinfo style="margin-top:10px" />
+                <Newmessage style="margin-top:10px" />
+                <Lables style="margin-top:10px" />
             </div>
         </div>
         <a-back-top />
@@ -39,30 +43,25 @@
 import Footer from '../../components/Footer/footer.vue'
 import Header from '../../components/Header/Header.vue'
 // import Home from '../Home/Home.vue'
-import { ref,reactive, onMounted, watch } from 'vue';
+import { ref, getCurrentInstance, reactive, onMounted } from 'vue'
 import './index.scss'
-import  {} from '@ant-design/icons-vue';
-import Listitem from '../../components/Listitem/Listitem.vue';
+import Listitem from '../../components/Listitem/Listitem.vue'
 import Myinfo from '../../components/Myinfo/Myinfo.vue'
-import Newmessage from '../../components/Listitem/Newmessage.vue';
-import Lables from '../../components/Listitem/Lables.vue';
-import Siteinfo from '../../components/Listitem/Siteinfo.vue';
+import Newmessage from '../../components/Listitem/Newmessage.vue'
+import Lables from '../../components/Listitem/Lables.vue'
+import Siteinfo from '../../components/Listitem/Siteinfo.vue'
 import Loading from '../../components/Loading/Loading.vue'
-import $store from "../../store/index";
-import { useRouter,onBeforeRouteUpdate  } from 'vue-router'
+import $store from "../../store/index"
+import { getUserInfo } from "../../plugins/getUserInfo"
+import { useRouter, useRoute } from 'vue-router'
 const router = useRouter();
+const route = useRoute()
 const routerPath=ref(router.currentRoute.value.path)
 const count = ref(4) 
-const current = ref(['1']);
+const current = ref(['1'])
 var isloading=ref(true)
-
-onBeforeRouteUpdate((to) => {
-    routerPath.value=to.fullPath
-    // console.log(to.fullPath, "=====");
-});
-onMounted(()=>{
-
-})
+const api = getCurrentInstance()?.appContext.config.globalProperties.$api
+const userInfo = getUserInfo()
 </script>
 
 <style>

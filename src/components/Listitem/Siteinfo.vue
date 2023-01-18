@@ -1,21 +1,29 @@
+<!--
+ * @Author: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @Date: 2022-12-20 14:51:37
+ * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @LastEditTime: 2023-01-17 16:24:34
+ * @FilePath: /pure-settlement1/src/components/Listitem/Siteinfo.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
     <div class='siteinfo'>
         <div class='siteinfotop'>
             站点信息
         </div>
         <div class='siteinfos'>
-            <div>文章总数:2710</div>
-            <div>页面总数:4</div>
-            <div>分类总数:54</div>
-            <div>标签总数:147</div>
-            <div>评论总数:1249</div>
-            <div>浏览总数:5757037</div>
+            <div>文章总数:{{ userInfo.articlesNumber }}</div>
+            <div>页面总数:{{ userInfo.pagesNumber }}</div>
+            <div>分类总数:{{ userInfo.classificationNumber }}</div>
+            <div>标签总数:{{ userInfo.labelsNumber }}</div>
+            <div>留言总数:{{ userInfo.messageNumber }}</div>
+            <div>浏览总数:{{ userInfo.viewsNumber }}</div>
         </div>
     </div>
 </template>
 
-<script>
-export default{}
+<script setup>
+const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
 </script>
 
 <style lang="scss">

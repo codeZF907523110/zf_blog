@@ -1,3 +1,11 @@
+<!--
+ * @Author: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @Date: 2022-12-20 14:51:37
+ * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @LastEditTime: 2023-01-18 15:53:56
+ * @FilePath: /zf-blog/src/pages/Messageboard/MessageBoard.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 
 
 <template>
@@ -8,13 +16,13 @@
             </div>
             <div class='areaboard'>
                 <div>
-                    <a-textarea style="resize:none" :maxlength='Number(100)'  placeholder="吐槽一下张峰这个小可爱吧!!!" :rows="4" />
+                    <el-input v-model="content" type="textarea" style="resize:none" :maxlength='Number(100)'  placeholder="吐槽一下吧!!!" :rows="4" />
                 </div>
                 
                 <div class='commentactive'>
                     <span class='cimg'><SmileOutlined />表情</span>
-                    <span class='cimg commentimg'><PictureOutlined />图片</span>
-                    <div>发布留言</div>
+                    <!-- <span class='cimg commentimg'><PictureOutlined />图片</span> -->
+                    <div @click="setMessage">发布留言</div>
                 </div>
             </div>
             
@@ -23,28 +31,67 @@
         <div class="allmessagecenter">
             <div class="allmessagetitle">
               <div style="float: left;background-color:#ea6f5a;width:3px;height:18px;margin-right: 5px;"></div>
-              精彩评论
-              <span style="font-size:15px">20</span>
+              精彩{{ isMessage ? '留言' : '评论' }}
+              <!-- <span style="font-size:15px">20</span> -->
             </div>
-            <Comment v-for="(item,index) in 10" :key="item.id" :time="index*150"></Comment>
+            <Comment v-for="(item,index) in messageList" :key="index" :isMessage="isMessage" :time="index*150" :commentItem="item" @getMessages="getMessages" />
         </div>
       </div>
     <!-- <Footer></Footer> -->
   </div>
 </template>
 <script setup>
-import { ref,reactive,onMounted } from 'vue';
+import { ref, reactive, onMounted, getCurrentInstance, onActivated } from 'vue'
 import './index.scss'
-import  {SmileOutlined,PictureOutlined} from '@ant-design/icons-vue';
-import Newmessage from '../../components/Listitem/Newmessage.vue';
-import Lables from '../../components/Listitem/Lables.vue';
-import Siteinfo from '../../components/Listitem/Siteinfo.vue';
-import Comment from '../../components/Comment/Comment.vue';
-import $store from "../../store/index";
-onMounted(()=>{
-    setTimeout(() => {
-        $store.state.isloading=false
-    }, 1000);
+import  {SmileOutlined,PictureOutlined} from '@ant-design/icons-vue'
+import Newmessage from '../../components/Listitem/Newmessage.vue'
+import Lables from '../../components/Listitem/Lables.vue'
+import Siteinfo from '../../components/Listitem/Siteinfo.vue'
+import Comment from '../../components/Comment/Comment.vue'
+import $store from "../../store/index"
+import dayjs from 'dayjs'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const messageList = ref([]) // 留言列表
+const content = ref('') //要留言的内容
+const api = getCurrentInstance()?.appContext.config.globalProperties.$api
+const articleId = ref('')
+
+const props = defineProps({
+  isMessage: {
+    type: Boolean,
+    default: true
+  }
+})
+
+// 获取留言
+const getMessages = async () => {
+  const { result } = await api.blog.getMessages({
+    isMessage: props.isMessage,
+    articleId: articleId.value
+  })
+  messageList.value = result
+}
+
+// 留言
+const setMessage = async () => {
+  await api.blog.setMessage({
+    content: content.value,
+    isMessage: props.isMessage,
+    articleId: articleId.value,
+    createTime: dayjs(new Date().getTime()).format('YYYY-MM-DD')
+  })
+  content.value = ''
+  getMessages()
+}
+
+onActivated(()=>{
+  articleId.value = route.query.id
+  getMessages()
+  setTimeout(() => {
+    $store.state.isloading=false
+  }, 1000)
 })
 </script>
 <style scoped>

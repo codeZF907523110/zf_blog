@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2022-02-22 10:16:06
- * @LastEditTime: 2022-02-22 10:34:29
- * @LastEditors: your name
+ * @LastEditTime: 2023-01-12 17:18:43
+ * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/App.vue
 -->
@@ -10,15 +10,21 @@
   <div class='homeback'>
       <!-- <img src="./assets/img/homeback.jpg" alt=""> -->
   </div>
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 
-<script>
-export default {
-  setup(){
-    console.log('setup');
-  }
-}
+<script setup>
+import { onActivated, onMounted } from "@vue/runtime-core"
+onActivated(() => {
+  window.scroll({
+    top: 0,
+    behavior: "smooth"
+  })
+})
 </script>
 
 <style lang='scss'>

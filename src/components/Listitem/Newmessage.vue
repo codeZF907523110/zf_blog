@@ -1,25 +1,38 @@
+<!--
+ * @Author: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @Date: 2022-12-20 14:51:37
+ * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @LastEditTime: 2023-01-17 17:06:12
+ * @FilePath: /pure-settlement1/src/components/Listitem/Newmessage.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
     <div class='newmessage'>
         <div class='messagetop'>
             最新留言
         </div>
         <div class='messages'>
-            <div>妾似琵琶斜入抱，任君翻指弄宫商。</div>
-            <div>你只是路过，我只是过客，我们只是擦肩而过</div>
-            <div>敲黑板：如果哪个不知趣的小同志再叫我表演：刘奶奶找牛奶奶买榴莲牛奶。我就会把你</div>
-            <div>师兄不学了他坚持了了六年，最终还是放弃了。</div>
-            <div>这几年离开行业的人越来越多了。太多人怀揣着“热爱”一头扎进玉作行业。</div>
-            <div>今天，探家将至结束，从知己家回来，亦带回这块盘，作久远留存，青春不复，</div>
-            <div>桂花又要开了。记得去年桂花开的日子，我的头发才勉强可以扎个小辫子，</div>
-            <div>这是我与lucky最后的一张合照，lucky已下葬，为避免反感，</div>
-            <div>你最爱的东西都给你带着，你爱的闹闹，留着陪我，作为补偿，</div>
-            <div>从未想过自己会用骑车的方式到达拉萨 从未想过自己会花12个月的时间去准备 </div>
+            <div v-for="(item, index) in newMessage" :key="index" @click="router.push('/display/messageboard')">
+              {{ item.content }}
+            </div>
         </div>
     </div>
 </template>
 
-<script>
-export default{}
+<script setup>
+import { ref, getCurrentInstance, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter()
+const api = getCurrentInstance()?.appContext.config.globalProperties.$api
+const newMessage = ref([])
+
+const getNewMessage = async () => {
+  const { result } = await api.userInfo.getNewMessage({})
+  newMessage.value = result
+}
+onMounted(() => {
+  getNewMessage()
+})
 </script>
 
 <style lang="scss">

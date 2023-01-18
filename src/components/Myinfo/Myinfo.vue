@@ -5,17 +5,17 @@
             <div class='headportrait'>
                 <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F10230779285%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639054216&t=06224b63c49bd5b2a8e08af37c645b7c" alt="">
             </div>
-            <div class='myname'><span>张峰</span> </div>
-            <div class='myspeak'>世上本无难易,为之则易!</div>
+            <div class='myname'><span>{{ userInfo.userName }}</span> </div>
+            <div class='myspeak'>{{ userInfo.signature }}</div>
             <div class='callme'>关注我</div>
             <div class='alticlactive'>
                 <div class='activeitem'>
-                    <span>2710</span>
+                    <span>{{ userInfo.articlesNumber }}</span>
                     <div>文章</div>
                 </div>
                 <div class='activeitem'>
-                    <span>1249</span>
-                    <div>评论</div>
+                    <span>{{ userInfo.messageNumber }}</span>
+                    <div>留言</div>
                 </div>
                 <div class='activeitem'>
                     <span>10000</span>
@@ -26,8 +26,10 @@
     </div>
 </template>
 
-<script>
-export default{}
+<script setup>
+import { getUserInfo } from "../../plugins/getUserInfo"
+
+const userInfo = getUserInfo()
 </script>
 
 <style lang='scss'>

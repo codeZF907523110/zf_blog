@@ -46,6 +46,8 @@
             top: 0;
             position: relative;
             animation: showalticleright 0.5s forwards;
+            position: sticky;
+            top: 0;
         }
         .alticleright::after{
             content: '';

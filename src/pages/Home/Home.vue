@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2022-02-22 10:16:06
- * @LastEditTime: 2022-02-22 15:20:42
- * @LastEditors: your name
+ * @LastEditTime: 2023-01-10 11:31:59
+ * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/pages/Home/Home.vue
 -->
@@ -29,21 +29,22 @@
   
 </template>
 <script setup>
-  import { ref,reactive ,onMounted} from 'vue';
+  import { ref,reactive ,onMounted, getCurrentInstance} from 'vue'
   import './index.scss'
-  import Listitem from '../../components/Listitem/Listitem.vue';
+  import Listitem from '../../components/Listitem/Listitem.vue'
   import Myinfo from '../../components/Myinfo/Myinfo.vue'
-  import Newmessage from '../../components/Listitem/Newmessage.vue';
-  import Lables from '../../components/Listitem/Lables.vue';
-  import Siteinfo from '../../components/Listitem/Siteinfo.vue';
-  import $store from "../../store/index";
+  import Newmessage from '../../components/Listitem/Newmessage.vue'
+  import Lables from '../../components/Listitem/Lables.vue'
+  import Siteinfo from '../../components/Listitem/Siteinfo.vue'
+  import $store from "../../store/index"
+  const api = getCurrentInstance()?.appContext.config.globalProperties.$api
   
   const count = ref(4) 
-  const current = ref(['1']);
-  onMounted(()=>{
-      setTimeout(() => {
-          $store.state.isloading=false
-      }, 1000);
+  const current = ref(['1'])
+  onMounted(async ()=>{
+    setTimeout(() => {
+      $store.state.isloading=false
+    }, 1000)
   })
 </script>
 <style scoped>
