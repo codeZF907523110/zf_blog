@@ -53,8 +53,8 @@
     <div class="articlemore">
       <div class="authorinfo">
         <!-- <div class="authortx">
-                    <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F10230779285%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639054216&t=06224b63c49bd5b2a8e08af37c645b7c" alt="">
-                </div> -->
+                  <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F10230779285%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639054216&t=06224b63c49bd5b2a8e08af37c645b7c" alt="">
+              </div> -->
         <span class="authorname">牛牛大作战</span>
       </div>
       <div class="articleactive">
@@ -149,7 +149,12 @@
     </div>
     <!-- 评论区 -->
     <div id="comment">
-       <message-board class="message-board" :isMessage="false" :articleId="blogItem._id" />
+       <message-board
+        class="message-board"
+        :isMessage="false"
+        :articleId="blogItem._id"
+        @addCommentNum="addCommentNum"
+      />
     </div>
   </div>
   <!-- 打赏 -->
@@ -188,10 +193,10 @@
             {{ item }}
           </div>
           <!-- <div>￥5</div>
-                    <div>￥10</div>
-                    <div>￥20</div>
-                    <div>￥50</div>
-                    <div>自定义</div> -->
+            <div>￥10</div>
+            <div>￥20</div>
+            <div>￥50</div>
+            <div>自定义</div> -->
         </div>
         <div class="rewardmessage">
           <textarea
@@ -295,6 +300,10 @@ const changeColor = (index) => {
   isChangeColor.value = index
 }
 
+// 增加留言数
+const addCommentNum = () => {
+  blogItem.commentNum ++
+}
 // 跳转到评论区
 const goComment = () => {
   const divTop = document.getElementById('comment').offsetTop+110
@@ -334,16 +343,16 @@ const getAllBlog = async () => {
   mdContent.value = marked(content.data)
 }
 onActivated(async () => {
+  window.scroll({
+    top: 0,
+    behavior: "smooth"
+  })
   _id.value = route.query.id
   await getAllBlog()
   await addOpenNum()
   setTimeout(() => {
     $store.state.isloading = false;
   }, 1000)
-  window.scroll({
-    top: 0,
-    behavior: "smooth"
-  })
 })
 </script>
 
@@ -351,7 +360,7 @@ onActivated(async () => {
 .message-board {
   margin-top: -30px;
 }
->>>pre {
+:deep(pre) {
   width: 100%;
   background: #282c34;
   color: #a9b7c6;

@@ -1,8 +1,8 @@
 /*
  * @Author: zhangfeng16 zhangfeng16@shuidi-inc.com
  * @Date: 2022-12-20 14:54:58
- * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
- * @LastEditTime: 2023-01-11 10:52:12
+ * @LastEditors: 流觞曲水 907523110@qq.com
+ * @LastEditTime: 2023-01-30 13:13:53
  * @FilePath: /zf-blog/vite.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -14,6 +14,9 @@ import { resolve } from 'path' // 主要用于alias文件路径别名
 export default defineConfig({
   plugins: [vue()],
   outDir: 'dist',
+  build: {
+    chunkSizeWarningLimit: 3000
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -23,6 +26,27 @@ export default defineConfig({
       '@utils': resolve(__dirname, './src/utils'),
       '@plugin': resolve(__dirname, './src/plugin'),
       '@assets': resolve(__dirname, './src/assets')
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        charset: false
+      }
+    },
+    postcss: {
+      plugins: [
+        {
+          postcssPlugin: 'internal:charset-removal',
+          AtRule: {
+            charset: (atRule) => {
+              if (atRule.name === 'charset') {
+                atRule.remove()
+              }
+            }
+          }
+        }
+      ],
     },
   },
   server: {

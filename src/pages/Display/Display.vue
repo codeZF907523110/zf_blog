@@ -1,41 +1,40 @@
 <!--
  * @Author: 流觞曲水 907523110@qq.com
  * @Date: 2022-10-15 20:30:45
- * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
- * @LastEditTime: 2023-01-17 16:56:27
+ * @LastEditors: 流觞曲水 907523110@qq.com
+ * @LastEditTime: 2023-01-25 17:45:29
  * @FilePath: /zf-blog/src/pages/Display/Display.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-    <div class='display' :class="{loading:$store.state.isloading}">
-        <Header></Header>
-        
-        <Loading :class="{diasplayload:!$store.state.isloading}"></Loading>
-        <div class='alticle' >
-            <div class='alticleleft'>
-                <div class='thisrouter' v-if="routerPath!='/display/home'">
-                    <el-breadcrumb separator=">">
-                        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                        <el-breadcrumb-item>技术专区</el-breadcrumb-item>
-                    </el-breadcrumb>
-                </div>
-                <router-view v-slot="{ Component }">
-                  <keep-alive>
-                    <component :is="Component" />
-                  </keep-alive>
-                </router-view>
-            </div>
-            <div class='alticleright'>
-                <Myinfo />
-                <Siteinfo style="margin-top:10px" />
-                <Newmessage style="margin-top:10px" />
-                <Lables style="margin-top:10px" />
-            </div>
-        </div>
-        <a-back-top />
-        <Footer></Footer>
-
+  <div class='display' :class="{loading:$store.state.isloading}">
+    <Header></Header>
+    
+    <Loading :class="{diasplayload:!$store.state.isloading}"></Loading>
+    <div class='alticle' >
+      <div class='alticleleft' :style="`width: ${route.fullPath.includes('/articlecontent') ? '100%' : '880px'}`">
+          <div class='thisrouter'>
+              <el-breadcrumb separator=">">
+                  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                  <el-breadcrumb-item>技术专区</el-breadcrumb-item>
+              </el-breadcrumb>
+          </div>
+          <router-view v-slot="{ Component }">
+            <keep-alive>
+              <component :is="Component" />
+            </keep-alive>
+          </router-view>
+      </div>
+      <div v-if="!route.fullPath.includes('articlecontent')" class='alticleright'>
+          <Myinfo />
+          <Siteinfo style="margin-top:10px" />
+          <Newmessage style="margin-top:10px" />
+          <Lables style="margin-top:10px" />
+      </div>
     </div>
+    <a-back-top />
+    <Footer />
+  </div>
     
 </template>
 

@@ -17,7 +17,7 @@
             <span class='itemtime'>{{ props.blogItem.releaseTime }}</span>
             <el-divider direction="vertical" />
             <span class='itemlable'>
-              <span v-for="(item, index) in props.blogItem.labels" :key="index">
+              <span v-for="(item, index) in props.blogItem.labels" :key="index" @click.stop="emit('changeItem', item)">
                 {{item}}
                 <i v-if="index !== props.blogItem.labels.length-1">·</i>
               </span>
@@ -66,6 +66,7 @@ const props = defineProps({
     default: () => {}
   }
 })
+const emit = defineEmits(['clickLabel'])
 
 const initSlot = () => {
   setTimeout(()=> {

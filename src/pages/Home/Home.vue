@@ -1,30 +1,29 @@
 <!--
  * @Author: your name
  * @Date: 2022-02-22 10:16:06
- * @LastEditTime: 2023-01-10 11:31:59
- * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @LastEditTime: 2023-01-29 16:38:13
+ * @LastEditors: 流觞曲水 907523110@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/pages/Home/Home.vue
 -->
 <template>
-
   <div class='home'>
-        <div class='updatetitle'>最近更新
-          <span>更多>></span>
-        </div>
-        <Listitem v-for="(item,index) in count" :key="index" ></Listitem>
-        <div class='updatetitle'>我的随笔
-          <span>更多>></span>
-        </div>
-        <Listitem v-for="(item,index) in count" :key="index" ></Listitem>
-        <div class='updatetitle'>技术专区
-          <span>更多>></span>
-        </div>
-        <Listitem v-for="(item,index) in count" :key="index" ></Listitem>
-        <div class='updatetitle'>相册
-          <span>更多>></span>
-        </div>
-        <Listitem v-for="(item,index) in count" :key="index" ></Listitem>
+    <div class='updatetitle'>最近更新
+      <span>更多>></span>
+    </div>
+    <Listitem v-for="(item,index) in count" :key="index" ></Listitem>
+    <div class='updatetitle'>我的随笔
+      <span>更多>></span>
+    </div>
+    <Listitem v-for="(item,index) in count" :key="index" ></Listitem>
+    <div class='updatetitle'>技术专区
+      <span>更多>></span>
+    </div>
+    <Listitem v-for="(item,index) in count" :key="index" ></Listitem>
+    <div class='updatetitle'>相册
+      <span>更多>></span>
+    </div>
+    <Listitem v-for="(item,index) in count" :key="index" ></Listitem>
   </div>
   
 </template>

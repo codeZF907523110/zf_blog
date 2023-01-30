@@ -1,4 +1,12 @@
 .technology{
+    display: flex;
+    .all_alticle {
+      width: 100%;
+      margin-left: 10px;
+      position: relative;
+      min-height: 100vh;
+      background: #fff;
+    }
     .lables,.sort{
         // width: 6px;
         height: 50px;
@@ -55,36 +63,33 @@
         
     }
     .classification{
-        width:108px;
-        height: 100vh;
-        position: sticky;
-        // border:1px solid red;
-        margin-left: -118px;
-        float: left;
-        top: 0px;
-        background-color: white;
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3);
-        overflow: auto;
-        border-radius: 3px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        margin-top: -40px;
-        animation: showclasslist 0.5s forwards;
-        .ifications{
-            width: 100%;
-            text-align: center;
-            height: 32px;
-            font-size: 14px;
-            line-height: 32px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .ifications:hover{
-            border-radius: 100px;
-            background-color: #303133;
-            color: white;
-            font-weight: 600;
-        }
+      position: sticky;
+      top: 0;
+      width:108px;
+      margin-left: -118px;
+      background-color: white;
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3);
+      overflow: auto;
+      border-radius: 3px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-top: -40px;
+      animation: showclasslist 0.5s forwards;
+      .ifications{
+          width: 100%;
+          text-align: center;
+          height: 32px;
+          font-size: 14px;
+          line-height: 32px;
+          cursor: pointer;
+          transition: 0.3s;
+      }
+      .ifications:hover{
+          border-radius: 100px;
+          background-color: #303133;
+          color: white;
+          font-weight: 600;
+      }
     }
     .classification::-webkit-scrollbar{
         width: 0px;
