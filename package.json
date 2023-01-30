@@ -1,6 +1,7 @@
 {
   "name": "zfblog",
   "version": "0.0.0",
+  "license": "ISC",
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",
