@@ -3,9 +3,8 @@ import VueCookies from 'vue-cookies'
 import qs from 'qs'
 import { ElNotification } from 'element-plus'
 let config = {
-  baseURL: 'https://zf-blog-serve.top',
+  baseURL: 'https://www.zf-blog-serve.top',
   timeout: 120 * 1000, // Timeout
-  // withCredentials: true, // Check cross-site Access-Control
   headers: {
     token: '',
     'Content-Type': 'application/x-www-form-urlencoded'
