@@ -9,7 +9,8 @@
 import { get, JPost, post } from '@/api/request.ts'
 
 // 获取作者信息
-export const getUserInfo = JPost('/api/userInfo/getUserInfo')
+// goudanyang: 如果后端接口有/api 拦截 此处应该加入/api
+export const getUserInfo = JPost('/userInfo/getUserInfo')
 
 // 获取最新五条留言
 export const getNewMessage = JPost('/api/userInfo/getNewMessage')

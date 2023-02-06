@@ -6,54 +6,63 @@
  * @FilePath: /zf-blog/vite.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 const path = require('path')
 import { resolve } from 'path' // 主要用于alias文件路径别名
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()],
-  outDir: 'dist',
-  build: {
-    chunkSizeWarningLimit: 3000
-  },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src'),
-      '@components': resolve(__dirname, './src/components'),
-      '@pages': resolve(__dirname, './src/pages'),
-      '@api': resolve(__dirname, './src/api'),
-      '@utils': resolve(__dirname, './src/utils'),
-      '@plugin': resolve(__dirname, './src/plugin'),
-      '@assets': resolve(__dirname, './src/assets')
+export default ({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
+  return defineConfig({
+    plugins: [vue()],
+    outDir: 'dist',
+    build: {
+      chunkSizeWarningLimit: 3000
     },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        charset: false
-      }
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, './src'),
+        '@components': resolve(__dirname, './src/components'),
+        '@pages': resolve(__dirname, './src/pages'),
+        '@api': resolve(__dirname, './src/api'),
+        '@utils': resolve(__dirname, './src/utils'),
+        '@plugin': resolve(__dirname, './src/plugin'),
+        '@assets': resolve(__dirname, './src/assets')
+      },
     },
-    postcss: {
-      plugins: [
-        {
-          postcssPlugin: 'internal:charset-removal',
-          AtRule: {
-            charset: (atRule) => {
-              if (atRule.name === 'charset') {
-                atRule.remove()
+    css: {
+      preprocessorOptions: {
+        scss: {
+          charset: false
+        }
+      },
+      postcss: {
+        plugins: [
+          {
+            postcssPlugin: 'internal:charset-removal',
+            AtRule: {
+              charset: (atRule) => {
+                if (atRule.name === 'charset') {
+                  atRule.remove()
+                }
               }
             }
           }
-        }
-      ],
+        ],
+      },
     },
-  },
-  server: {
-    port: 5000,
-    host: '0.0.0.0',
-    https: false,
-    hmr: true
-  },
-})
-
+    server: {
+      port: 5000,
+      host: '0.0.0.0',
+      https: false,
+      hmr: true,
+      proxy: {
+        '/api': {
+          target: env.VITE_API_URL,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
+      }
+    },
+  })
+}
