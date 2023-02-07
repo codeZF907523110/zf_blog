@@ -3,7 +3,7 @@ import VueCookies from 'vue-cookies'
 import qs from 'qs'
 import { ElNotification } from 'element-plus'
 let config = {
-  baseURL: 'https://www.zf-blog-serve.top',
+  baseURL: '/api',
   timeout: 120 * 1000, // Timeout
   headers: {
     token: '',

@@ -16,7 +16,7 @@ export const getUserInfo =  () => {
     return userInfo
   }
   api.userInfo.getUserInfo({}).then(({ result }) => {
-    console.log(result, 'result')
+    // TODO 增加条件判断用来存储sessionStorage-userInfo
     userInfo = result
     sessionStorage.setItem('userInfo', JSON.stringify(result))
     return userInfo
