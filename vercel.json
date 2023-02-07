@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://www.zf-blog-serve.top" },
+    { "source": "/api/(.*)", "destination": "http://localhost:3006" },
     { "source": "/:path*", "destination": "/index.html" }
   ]
 }
