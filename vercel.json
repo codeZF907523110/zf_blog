@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "http://localhost:3006" },
+    { "source": "/api/(.*)", "destination": "/api/proxy" },
     { "source": "/:path*", "destination": "/index.html" }
   ]
 }
