@@ -2,7 +2,7 @@
  * @Author: zhangfeng16 zhangfeng16@shuidi-inc.com
  * @Date: 2022-12-20 14:54:58
  * @LastEditors: 流觞曲水 907523110@qq.com
- * @LastEditTime: 2023-02-07 15:16:45
+ * @LastEditTime: 2023-02-07 16:05:14
  * @FilePath: /zf-blog/vite.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -60,7 +60,7 @@ export default ({ mode }) => {
         '/api': {
             target: 'https://www.zf-blog-serve.top',//替换的服务端地址
             changeOrigin: true,//开启代理，允许跨域
-            rewrite: path => path.replace(/^\/path/, '')//设置重写的路径
+            rewrite: path => path//设置重写的路径
         }
       }
     },
