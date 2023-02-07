@@ -5,6 +5,7 @@ import { ElNotification } from 'element-plus'
 let config = {
   baseURL: '/api',
   timeout: 120 * 1000, // Timeout
+  // withCredentials: true, // Check cross-site Access-Control
   headers: {
     token: '',
     'Content-Type': 'application/x-www-form-urlencoded'
