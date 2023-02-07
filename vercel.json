@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)", //准备匹配的接口
-      "destination": "/api/proxy" //配置路径
+      "destination": "./src/api/proxy.ts" //配置路径
     }
   ]
  }
