@@ -8,7 +8,7 @@
  */
 import api from '@/api/index'
 
-export const getUserInfo =  () => {
+export const getUserInfo = () => {
   let userInfo = {}
   const info = sessionStorage.getItem('userInfo')
   if (info) {

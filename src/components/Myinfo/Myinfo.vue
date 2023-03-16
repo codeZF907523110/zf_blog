@@ -27,9 +27,13 @@
 </template>
 
 <script setup>
-import { getUserInfo } from "../../plugins/getUserInfo"
+import { getUserInfo } from "@/plugins/getUserInfo"
+import { onMounted, reactive } from "vue"
 
-const userInfo = getUserInfo()
+const userInfo = reactive({})
+onMounted(() => {
+  Object.assign(userInfo, getUserInfo())
+})
 </script>
 
 <style lang='scss'>

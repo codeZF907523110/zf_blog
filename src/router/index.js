@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2022-02-22 10:16:06
- * @LastEditTime: 2023-01-30 20:14:04
- * @LastEditors: 流觞曲水 907523110@qq.com
+ * @LastEditTime: 2023-03-16 16:25:28
+ * @LastEditors: zhangfeng16 907523110@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/router/index.js
  */
@@ -10,7 +10,7 @@ import { createRouter, createWebHistory} from "vue-router";
 const routes = [
     {
       path:'/',
-      redirect:'/display/home'
+      redirect:'/display/technology?label=全部'
     },
     {
       path:'/display',

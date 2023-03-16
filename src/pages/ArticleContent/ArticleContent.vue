@@ -48,7 +48,6 @@
       </div>
       <div class="covertext">image</div>
       <div class="contenttext" v-html="mdContent" />
-      <!-- <highlightjs class="contenttext" autodetect :code="mdContent" /> -->
     </div>
     <div class="articlemore">
       <div class="authorinfo">
@@ -260,11 +259,11 @@
 import { useRouter, useRoute } from "vue-router"
 import { ref, reactive, onMounted, getCurrentInstance, onActivated } from "vue"
 import { SmileOutlined, PictureOutlined } from "@ant-design/icons-vue"
-import Newmessage from "../../components/Listitem/Newmessage.vue"
-import Lables from "../../components/Listitem/Lables.vue"
-import Siteinfo from "../../components/Listitem/Siteinfo.vue"
-import Comment from "../../components/Comment/Comment.vue"
-import $store from "../../store/index"
+import Newmessage from "@/components/Listitem/Newmessage.vue"
+import Lables from "@/components/Listitem/Lables.vue"
+import Siteinfo from "@/components/Listitem/Siteinfo.vue"
+import Comment from "@/components/Comment/Comment.vue"
+import $store from "@/store/index"
 import MessageBoard from "../MessageBoard/MessageBoard.vue"
 import "./index.scss"
 import { marked } from "marked"

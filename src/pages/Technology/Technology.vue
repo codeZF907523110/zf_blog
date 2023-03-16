@@ -1,8 +1,8 @@
 <!--
  * @Author: 流觞曲水 907523110@qq.com
  * @Date: 2022-10-15 20:30:45
- * @LastEditors: 流觞曲水 907523110@qq.com
- * @LastEditTime: 2023-01-25 17:51:51
+ * @LastEditors: zhangfeng16 907523110@qq.com
+ * @LastEditTime: 2023-03-16 16:46:06
  * @FilePath: /zf-blog/src/pages/Technology/Technology.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -21,12 +21,15 @@
     </div>
     <div class='all_alticle'>
       <div class='list_item'>
-        <Listitem
-          v-for="(item,index) in blogList"
-          :key="index" :time="index*100"
-          :blogItem="item"
-          @changeItem="changeItem"
-        />
+        <div v-if="blogList.length">
+          <Listitem
+            v-for="(item,index) in blogList"
+            :key="index" :time="index*100"
+            :blogItem="item"
+            @changeItem="changeItem"
+          />
+        </div>
+        <el-skeleton class="el_skeleton" v-else :rows="6" animated />
       </div>
       <el-pagination
         v-model:currentPage="pageNum"
@@ -41,7 +44,7 @@
   </div>
 </template>
 <script setup>
-import { ref, reactive, getCurrentInstance, onActivated} from 'vue'
+import { ref, reactive, getCurrentInstance, onActivated, onMounted} from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import './index.scss'
 import  {} from '@ant-design/icons-vue'
@@ -97,6 +100,9 @@ onActivated(()=>{
 .icons-list .anticon {
   margin-right: 6px;
   font-size: 24px;
+}
+.el_skeleton {
+  padding: 20px;
 }
 .el-pagination {
   display: flex;
