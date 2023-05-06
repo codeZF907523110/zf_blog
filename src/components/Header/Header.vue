@@ -1,3 +1,11 @@
+<!--
+ * @Author: zhangfeng16 907523110@qq.com
+ * @Date: 2023-01-30 19:42:18
+ * @LastEditors: zhangfeng16 907523110@qq.com
+ * @LastEditTime: 2023-05-06 14:56:53
+ * @FilePath: /zf_blog/src/components/Header/Header.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
     <div class='homeheader' :class="{hideheader:isHideHeader}">
         <!-- <div class='homelogo'>
@@ -20,7 +28,7 @@
                     </div>
                 </div>
             </div>
-                    <div class="writebutton" v-if="!isLogin" @click="isShowLoginBox = true" style="">
+                    <div class="writebutton" v-if="!isLogin" @click="gitHubLogin" style="">
                         登陆/注册
                     </div>
                     <el-dropdown v-else style="width:40px;margin-left:50px">
@@ -68,7 +76,7 @@
             </span>
             </template>
         </el-dialog>
-        <!-- 打开登陆注册弹窗 -->
+        <!-- 登陆注册弹窗 -->
         <el-dialog
             v-model="isShowLoginBox"
             title="登陆张峰的个人博客"
@@ -101,9 +109,11 @@ import {UserOutlined}from '@ant-design/icons-vue';
 import { onMounted } from 'vue';
 import { ref,reactive } from 'vue';
 import {CaretUpOutlined} from '@ant-design/icons-vue';
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import api from '@/api/index'
 const router = useRouter();
-import $store from "../../store/index";
+const route = useRoute()
+import $store from "@/store/index";
 let isHideHeader=ref(false)
 let isLogin=ref(false)
 let isShowLoginBox=ref(false)
@@ -166,6 +176,13 @@ const headersIcons=[]
 const dialogVisible = ref(false)
 
 let editType=ref(1)
+
+const gitHubLogin = async () => {
+  const res = await api.login.gitHubLogin({
+    path: window.location.href
+  })
+  window.location.href(res)
+}
 
 const handleClose = (done) => {
     done()
