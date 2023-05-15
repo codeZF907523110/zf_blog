@@ -3,7 +3,7 @@ import VueCookies from 'vue-cookies'
 import qs from 'qs'
 import { ElNotification } from 'element-plus'
 let config = {
-  baseURL: 'http://82.157.237.22:3006',
+  baseURL: 'http://zfblog.top',
   timeout: 120 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
   headers: {
