@@ -2,7 +2,7 @@
  * @Author: zhangfeng16 907523110@qq.com
  * @Date: 2023-01-30 19:42:18
  * @LastEditors: zhangfeng16 907523110@qq.com
- * @LastEditTime: 2023-05-06 14:56:53
+ * @LastEditTime: 2023-05-16 14:30:34
  * @FilePath: /zf_blog/src/components/Header/Header.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -181,7 +181,7 @@ const gitHubLogin = async () => {
   const res = await api.login.gitHubLogin({
     path: window.location.href
   })
-  window.location.href(res)
+  window.location.href = res
 }
 
 const handleClose = (done) => {
