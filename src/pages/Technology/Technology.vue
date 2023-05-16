@@ -2,7 +2,7 @@
  * @Author: 流觞曲水 907523110@qq.com
  * @Date: 2022-10-15 20:30:45
  * @LastEditors: zhangfeng16 907523110@qq.com
- * @LastEditTime: 2023-03-16 16:46:06
+ * @LastEditTime: 2023-05-16 16:46:53
  * @FilePath: /zf-blog/src/pages/Technology/Technology.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -47,7 +47,6 @@
 import { ref, reactive, getCurrentInstance, onActivated, onMounted} from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import './index.scss'
-import  {} from '@ant-design/icons-vue'
 import Listitem from '@components/Listitem/Listitem.vue'
 import $store from "@/store/index"
 const api = getCurrentInstance()?.appContext.config.globalProperties.$api

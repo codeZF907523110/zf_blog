@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2022-02-23 10:24:34
- * @LastEditTime: 2023-01-16 19:14:08
- * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @LastEditTime: 2023-05-16 16:43:42
+ * @LastEditors: zhangfeng16 907523110@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/pages/WriteArticle/components/saveDraft.vue
 -->
@@ -425,9 +425,6 @@ const removeItem = (index) => {
         box-shadow: none;
         height: 60px;
         color: rgb(180, 179, 179);
-      }
-      .ant-input-textarea-show-count::after {
-        margin-top: 10px;
       }
     }
     .coverbtn {

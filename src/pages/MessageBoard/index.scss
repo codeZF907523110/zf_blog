@@ -56,16 +56,16 @@
                 .commentimg{
                     margin-left: 10px;
                 }
-                span{
-                    color:#a0a0a0;
-                    cursor: pointer;
+                .cimg{
+                  color:#a0a0a0;
+                  cursor: pointer;
+                  transition: 0.3s;
+                  svg{
+                    margin-right: 5px;
                     transition: 0.3s;
-                    svg{
-                        margin-right: 5px;
-                        transition: 0.3s;
-                    }
+                  }
                 }
-                span:hover{
+                .cimg:hover{
                     color: #303133;
                     transition: 0.3s;
                     svg{
@@ -73,7 +73,7 @@
                         transition: 0.3s;
                     }
                 }
-                div{
+                .active_message_btn{
                     position: absolute;
                     right:0px;
                     width: 92px;
@@ -86,7 +86,7 @@
                     cursor: pointer;
                     transition: 0.3s;
                 }
-                div:hover{
+                .active_message_btn:hover{
                     background-color: #000000;
                     transition: 0.3s;
                 }

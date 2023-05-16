@@ -23,7 +23,11 @@
                     <el-input v-model="content" type="textarea" style="resize:none" :maxlength='Number(100)'  placeholder="回复" :rows="4" />
                   </div>
                   <div class="reply_area_active">
-                    <span class='cion_img'><SmileOutlined style="margin-right:5px" />表情</span>
+                    <Emoji>
+                      <template #reference>
+                        <span class='cion_img'><SmileOutlined style="margin-right:5px" />表情</span>
+                      </template>
+                    </Emoji>
                     <div class="reply_area_btn" style="right:70px" @click="reply(commentItem._id, commentItem.userName, commentItem._id)">发布</div>
                     <div class="reply_area_btn" @click="noShowCommentArea()">取消</div>
                   </div>
@@ -66,7 +70,11 @@
                     <el-input v-model="content" type="textarea" style="resize:none" :maxlength='Number(100)'  placeholder="回复" :rows="4" />
                   </div>
                   <div class="reply_area_active">
-                    <span class='cion_img'><SmileOutlined style="margin-right:5px" />表情</span>
+                    <Emoji>
+                      <template #reference>
+                        <span class='cion_img'><SmileOutlined style="margin-right:5px" />表情</span>
+                      </template>
+                    </Emoji>
                     <div class="reply_area_btn" @click="reply(commentItem._id, item.userName, item._id)" style="right:70px">发布</div>
                     <div class="reply_area_btn" @click="noShowCommentArea()">取消</div>
                   </div>
@@ -87,6 +95,7 @@
 import { ref,reactive,defineProps,onMounted, getCurrentInstance, watch } from 'vue'
 import  {SmileOutlined,PictureOutlined} from '@ant-design/icons-vue'
 import dayjs from 'dayjs'
+import Emoji from "@/components/Emoji/index.vue";
 
 const emit = defineEmits(['getMessages'])
 const api = getCurrentInstance()?.appContext.config.globalProperties.$api
