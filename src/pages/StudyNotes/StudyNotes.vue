@@ -1,6 +1,6 @@
 <template>
   <div class="studynotes">
-    <a-back-top />
+    <el-backtop :right="100" :bottom="100" />
     <div class="studynavigation"></div>
     <div class="notes">
       <div class="notesmenus">

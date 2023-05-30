@@ -1,8 +1,8 @@
 <!--
  * @Author: zhangfeng16 zhangfeng16@shuidi-inc.com
  * @Date: 2022-12-20 14:51:37
- * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
- * @LastEditTime: 2023-01-17 17:06:12
+ * @LastEditors: zhangfeng16 907523110@qq.com
+ * @LastEditTime: 2023-05-16 19:44:48
  * @FilePath: /pure-settlement1/src/components/Listitem/Newmessage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -20,10 +20,10 @@
 </template>
 
 <script setup>
-import { ref, getCurrentInstance, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import api from '@/api/index'
 const router = useRouter()
-const api = getCurrentInstance()?.appContext.config.globalProperties.$api
 const newMessage = ref([])
 
 const getNewMessage = async () => {
@@ -45,6 +45,7 @@ onMounted(() => {
             width: 100%;
             height:40px;
             background: #303133;
+            box-sizing: border-box;
             color: white;
             line-height: 40px;
             font-size: 16px;

@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2022-02-22 11:39:44
- * @LastEditTime: 2022-02-22 11:59:09
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-05-22 20:14:01
+ * @LastEditors: zhangfeng16 907523110@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/pages/WriteArticle/WriteHome.vue
 -->
@@ -30,17 +30,9 @@
 </template>
 
 <script setup>
-import {
-  Location,
-  Document,
-  Menu as IconMenu,
-  Setting,
-} from '@element-plus/icons-vue'
 const handleOpen = (key, keyPath) => {
-  console.log(key, keyPath)
 }
 const handleClose = (key, keyPath) => {
-  console.log(key, keyPath)
 }
 </script>
 

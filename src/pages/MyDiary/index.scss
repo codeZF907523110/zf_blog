@@ -67,55 +67,64 @@
                 }
             }
             .areaboard{
-                margin-left: 10px;
-                flex: 1;
-                .commentactive{
-                    width: 100%;
-                    height: 40px;
-                    display: flex;
-                    font-size: 14px;
-                    line-height: 40px;
-                    align-items: center;
+              margin-left: 10px;
+              flex: 1;
+              .commentactive{
+                  width: 100%;
+                  height: 40px;
+                  display: flex;
+                  font-size: 14px;
+                  line-height: 40px;
+                  align-items: center;
+                  position: relative;
+                  margin-top: 2px;
+                  .commentimg{
+                      margin-left: 10px;
+                  }
+                  .cimg{
+                    color:#a0a0a0;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    svg{
+                      position: relative;
+                      width: 20px;
+                      height: 14px;
+                      transition: 0.3s;
+                    }
+                  }
+                  .icon_e {
                     position: relative;
-                    margin-top: 2px;
-                    .commentimg{
-                        margin-left: 10px;
-                    }
-                    span{
-                        color:#a0a0a0;
-                        cursor: pointer;
+                    top: 2px;
+                  }
+                  .cimg:hover{
+                      color: #303133;
+                      transition: 0.3s;
+                      svg{
+                        fill:#303133!important;
                         transition: 0.3s;
-                        svg{
-                            margin-right: 5px;
-                            transition: 0.3s;
+                        path {
+                          fill:#303133!important;
                         }
-                    }
-                    span:hover{
-                        color: #303133;
-                        transition: 0.3s;
-                        svg{
-                            fill:#303133;
-                            transition: 0.3s;
-                        }
-                    }
-                    div{
-                        position: absolute;
-                        right:0px;
-                        width: 92px;
-                        height: 35px;
-                        text-align: center;
-                        background-color: #38393b;
-                        line-height: 35px;
-                        border-radius: 3px;
-                        color: white;
-                        cursor: pointer;
-                        transition: 0.3s;
-                    }
-                    div:hover{
-                        background-color: #000000;
-                        transition: 0.3s;
-                    }
-                }
+                      }
+                  }
+                  .active_message_btn{
+                      position: absolute;
+                      right:0px;
+                      width: 92px;
+                      height: 35px;
+                      text-align: center;
+                      background-color: #38393b;
+                      line-height: 35px;
+                      border-radius: 3px;
+                      color: white;
+                      cursor: pointer;
+                      transition: 0.3s;
+                  }
+                  .active_message_btn:hover{
+                      background-color: #000000;
+                      transition: 0.2s;
+                  }
+              }
             }
         }
         .allmessage{

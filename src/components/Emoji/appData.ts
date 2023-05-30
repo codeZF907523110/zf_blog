@@ -140,21 +140,6 @@ const appData = [
         "name": "victory hand"
     },
     {
-        "codes": "1F91E",
-        "char": "🤞",
-        "name": "crossed fingers"
-    },
-    {
-        "codes": "1F91F",
-        "char": "🤟",
-        "name": "love-you gesture"
-    },
-    {
-        "codes": "1F918",
-        "char": "🤘",
-        "name": "sign of the horns"
-    },
-    {
         "codes": "1F919",
         "char": "🤙",
         "name": "call me hand"
@@ -173,11 +158,6 @@ const appData = [
         "codes": "1F446",
         "char": "👆",
         "name": "backhand index pointing up"
-    },
-    {
-        "codes": "1F595",
-        "char": "🖕",
-        "name": "middle finger"
     },
     {
         "codes": "1F447",

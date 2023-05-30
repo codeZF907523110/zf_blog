@@ -47,19 +47,25 @@
         />
       </div>
       <div class="covertext">image</div>
-      <div class="contenttext" v-html="mdContent" />
+      <md-editor
+        :previewOnly="true"
+        class="md-editor"
+        v-model="mdContent"
+      />
+      <!-- <div class="contenttext" v-html="mdContent" /> -->
     </div>
     <div class="articlemore">
       <div class="authorinfo">
         <!-- <div class="authortx">
                   <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F10230779285%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639054216&t=06224b63c49bd5b2a8e08af37c645b7c" alt="">
               </div> -->
-        <span class="authorname">牛牛大作战</span>
+        <span class="authorname">点个赞再走吧</span>
       </div>
       <div class="articleactive">
-        <div @click="likeArticle">
+        <div>
           <svg
-            v-if="!isLike"
+            v-if="!blogItem.likePeople.includes(VueCookies.get('user'))"
+            @click="giveBlogALike(true)"
             t="1642318635700"
             class="icon"
             viewBox="0 0 1024 1024"
@@ -76,6 +82,7 @@
           </svg>
           <svg
             v-else
+            @click="giveBlogALike(false)"
             t="1642319679335"
             class="icon"
             viewBox="0 0 1024 1024"
@@ -256,6 +263,8 @@
 </template>
 
 <script setup>
+import MdEditor from 'md-editor-v3'
+import 'md-editor-v3/lib/style.css'
 import { useRouter, useRoute } from "vue-router"
 import { ref, reactive, onMounted, getCurrentInstance, onActivated } from "vue"
 import Newmessage from "@/components/Listitem/Newmessage.vue"
@@ -270,6 +279,10 @@ import { marked } from "marked"
 import hljs from 'highlight.js'
 // 自选代码高亮样式
 import 'highlight.js/scss/atom-one-dark.scss'
+import api from '@/api/index'
+import VueCookies from 'vue-cookies'
+
+import Axios from 'axios'
 
 // marked设置
 const rendererMD = new marked.Renderer();
@@ -279,8 +292,6 @@ marked.setOptions({
   },
   renderer: rendererMD
 })
-
-import Axios from 'axios'
 const route = useRoute()
 
 const moneyBtn = ["￥2", "￥5", "￥10", "￥20", "￥50", "自定义"]
@@ -290,8 +301,9 @@ const isChangeColor = ref(0)
 const payWay = ref(true)
 const isShowReward = ref(false)
 const _id = ref('')
-const api = getCurrentInstance()?.appContext.config.globalProperties.$api
-const blogItem = reactive({}) //博客内容
+const blogItem = reactive({ //博客内容
+  likePeople: []
+})
 const mdContent = ref("") //markdown内容
 
 const changeColor = (index) => {
@@ -312,8 +324,17 @@ const goComment = () => {
 }
 
 // 点赞
-const likeArticle = async () => {
-  await api.blog.giveALike({_id: blogItem._id})
+const giveBlogALike = async (isAddLikePeople) => {
+  if (isAddLikePeople) {
+    blogItem.likePeople.push(VueCookies.get('user'))
+  } else {
+    const index = blogItem.likePeople.indexOf(VueCookies.get('user'))
+    blogItem.likePeople.splice(index, 1)
+  }
+  await api.blog.giveBlogALike({
+    _id: blogItem._id,
+    isAddLikePeople
+  })
   isLike.value = !isLike.value
 }
 
@@ -340,7 +361,7 @@ const getAllBlog = async () => {
   const content = await Axios.get(blogItem.blogUrl)
   mdContent.value = marked(content.data)
 }
-onActivated(async () => {
+onMounted(async () => {
   window.scroll({
     top: 0,
     behavior: "smooth"
@@ -353,16 +374,3 @@ onActivated(async () => {
   }, 1000)
 })
 </script>
-
-<style scoped>
-.message-board {
-  margin-top: -30px;
-}
-:deep(pre) {
-  width: 100%;
-  background: #282c34;
-  color: #a9b7c6;
-  padding: 20px;
-  border-radius: 8px;
-}
-</style>

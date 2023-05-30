@@ -4,14 +4,14 @@ import qs from 'qs'
 import { ElNotification } from 'element-plus'
 let config = {
   baseURL: 'http://zfblog.top',
+  // baseURL: 'http://localhost:3006',
   timeout: 120 * 1000, // Timeout
-  // withCredentials: true, // Check cross-site Access-Control
+  withCredentials: true, //自动添加cookie
   headers: {
     token: '',
     'Content-Type': 'application/x-www-form-urlencoded'
   }
 }
-
 const axios = Axios.create(config)
 
 axios.defaults.transformRequest = (body) => {
@@ -38,8 +38,9 @@ axios.interceptors.request.use(config => {
     return {
       ...config,
       headers: {
-        token: VueCookies.get('SDB_ssoToken')|| '',
-        'Content-Type': contentType
+        token: VueCookies.get('token')|| '',
+        'Content-Type': contentType,
+        Authorization: `Bearer ${VueCookies.get('token') || ''}`
       }
     };
   },error => {

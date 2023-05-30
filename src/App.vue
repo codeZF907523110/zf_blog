@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2022-02-22 10:16:06
- * @LastEditTime: 2023-01-12 17:18:43
- * @LastEditors: zhangfeng16 zhangfeng16@shuidi-inc.com
+ * @LastEditTime: 2023-05-25 19:27:05
+ * @LastEditors: zhangfeng16 907523110@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/App.vue
 -->
@@ -12,13 +12,16 @@
   </div>
   <router-view v-slot="{ Component }">
     <keep-alive>
-      <component :is="Component" />
+      <component :is="Component" :key="route.fullPath" />
     </keep-alive>
   </router-view>
 </template>
 
 <script setup>
 import { onActivated, onMounted } from "@vue/runtime-core"
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter();
+const route = useRoute()
 onActivated(() => {
   window.scroll({
     top: 0,
@@ -29,6 +32,9 @@ onActivated(() => {
 
 <style lang='scss'>
   body{
+    margin: 0;
+    padding: 0;
+    color: #303133;
     background: #c7c9cc!important;
     font-family: '微软雅黑'!important;
   }

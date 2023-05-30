@@ -11,7 +11,9 @@
                 <div style="font-size:12px;color: #969696;margin-top:3px">{{ commentItem.createTime }}</div>
                 <div class="commentcontent">{{ commentItem.content }}</div>
                 <div class='item_active'>
-                    <span class='spans'><svg t="1636444918853" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2445" ><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="2446"></path></svg>
+                    <span class='spans'>
+                      <svg @click="giveALike(commentItem._id, true, commentItem)" v-if="!commentItem.likePeople.includes(VueCookies.get('user'))" t="1636444918853" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2445" ><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="2446"></path></svg>
+                      <svg @click="giveALike(commentItem._id, false, commentItem)" v-else  t="1684916849996" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2424" width="200" height="200"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="2425" fill="#d81e06"></path></svg>
                       {{ commentItem.likePeople ? commentItem.likePeople.length : 0 }}
                     </span>
                     <span class='spans' @click="showCommentArea(commentItem._id)" style="margin-left:20px"><svg t="1636445025701" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4830" ><path d="M512 61.44c248.832 0 450.56 201.728 450.56 450.56 0 91.62752-27.36128 176.86528-74.3424 248.0128l31.5392 94.6176a40.96 40.96 0 0 1-46.8992 53.10464l-109.32224-21.87264A448.47104 448.47104 0 0 1 512 962.56C263.168 962.56 61.44 760.832 61.44 512S263.168 61.44 512 61.44z m0 61.44C297.10336 122.88 122.88 297.10336 122.88 512s174.22336 389.12 389.12 389.12c75.42784 0 147.49696-21.44256 209.5104-61.1328l7.68-5.05856 21.25824-14.336 99.84 19.968-29.7984-89.47712 16.46592-24.94464A386.9696 386.9696 0 0 0 901.12 512c0-214.89664-174.22336-389.12-389.12-389.12zM276.48 440.32a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z m235.52 0a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z m235.52 0a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z" p-id="4831"></path></svg>
@@ -23,13 +25,15 @@
                     <el-input v-model="content" type="textarea" style="resize:none" :maxlength='Number(100)'  placeholder="回复" :rows="4" />
                   </div>
                   <div class="reply_area_active">
-                    <Emoji>
+                    <Emoji @changeText="(char)=>{ content+=char }">
                       <template #reference>
-                        <span class='cion_img'><SmileOutlined style="margin-right:5px" />表情</span>
+                        <span class='cion_img'>
+                          <svg t="1684227537190" class="icon" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2456" width="200" height="200"><path d="M495.465 830.665c-187.138 0-264.948-168.222-268.193-175.401l62.966-28.307c2.486 5.49 62.207 134.667 205.194 134.667 153.067-1.795 211.302-129.213 213.685-134.633l63.103 27.996c-3.141 7.077-79.054 173.364-273.13 175.643l-3.625 0.034zM500.16 991.221c-256.974 0-466.034-209.060-466.034-466.034s209.060-466.034 466.034-466.034 466.034 209.060 466.034 466.034-209.060 466.034-466.034 466.034zM500.16 128.196c-218.897 0-396.991 178.094-396.991 396.991s178.094 396.991 396.991 396.991 396.991-178.094 396.991-396.991-178.059-396.991-396.991-396.991zM311.088 444.27c0 29.689 24.062 53.818 53.818 53.818s53.818-24.096 53.818-53.818-24.062-53.818-53.818-53.818-53.818 24.096-53.818 53.818zM580.765 444.27c0 29.689 24.062 53.818 53.818 53.818s53.818-24.096 53.818-53.818-24.062-53.818-53.818-53.818-53.818 24.096-53.818 53.818z" fill="#a0a0a0" p-id="2457"></path></svg>
+                          表情</span>
                       </template>
                     </Emoji>
-                    <div class="reply_area_btn" style="right:70px" @click="reply(commentItem._id, commentItem.userName, commentItem._id)">发布</div>
-                    <div class="reply_area_btn" @click="noShowCommentArea()">取消</div>
+                    <el-button class="reply_area_btn" color="#ec7259" style="right:70px" @click="reply(commentItem._id, commentItem.userName, commentItem._id)">发布</el-button>
+                    <el-button class="reply_area_btn" @click="noShowCommentArea()">取消</el-button>
                   </div>
                 </div>
             </div>
@@ -41,10 +45,10 @@
                     <div class="uc_top_right">
                         <div class="user_name">
                           <span class="user_name_item">
-                            <span class="author_box">作者</span>
+                            <span v-if="item.userName === VueCookies.get('user')" class="author_box">作者</span>
                             <span>{{ item.userName }}</span>
                             <span v-if="item.reviewerUserName">
-                              <span style="color:#999">回复</span>
+                              <span style="color:#C0C4CC;margin-left: 10px;">回复</span>
                               {{ item.reviewerUserName }}
                             </span>
                             
@@ -55,14 +59,24 @@
                 </div>
                 <div class="user_comment_bottom">
                     <div class="uc_bottom_content">{{ item.content }}</div>
-                    <div class='item_active'>
+                    <!-- <div class='item_active'>
                         <span class='spans'><svg t="1636444918853" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2445" ><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="2446"></path></svg>
                           {{ item.likePeople ? item.likePeople.length : 0 }}
                         </span>
                         <span class='spans' @click="showCommentArea(item._id)" style="margin-top:5px;margin-left:20px"><svg t="1636445025701" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4830" ><path d="M512 61.44c248.832 0 450.56 201.728 450.56 450.56 0 91.62752-27.36128 176.86528-74.3424 248.0128l31.5392 94.6176a40.96 40.96 0 0 1-46.8992 53.10464l-109.32224-21.87264A448.47104 448.47104 0 0 1 512 962.56C263.168 962.56 61.44 760.832 61.44 512S263.168 61.44 512 61.44z m0 61.44C297.10336 122.88 122.88 297.10336 122.88 512s174.22336 389.12 389.12 389.12c75.42784 0 147.49696-21.44256 209.5104-61.1328l7.68-5.05856 21.25824-14.336 99.84 19.968-29.7984-89.47712 16.46592-24.94464A386.9696 386.9696 0 0 0 901.12 512c0-214.89664-174.22336-389.12-389.12-389.12zM276.48 440.32a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z m235.52 0a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z m235.52 0a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z" p-id="4831"></path></svg>
                           回复
                         </span>
-                    </div>  
+                    </div> -->
+                    <div class='item_active'>
+                      <span class='spans'>
+                        <svg @click="giveALike(item._id, true, item)" v-if="!item.likePeople.includes(VueCookies.get('user'))" t="1636444918853" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2445" ><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="2446"></path></svg>
+                        <svg @click="giveALike(item._id, false, item)" v-else  t="1684916849996" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2424" width="200" height="200"><path d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z" p-id="2425" fill="#d81e06"></path></svg>
+                        {{ item.likePeople ? item.likePeople.length : 0 }}
+                      </span>
+                      <span class='spans' @click="showCommentArea(item._id)" style="margin-left:20px"><svg t="1636445025701" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4830" ><path d="M512 61.44c248.832 0 450.56 201.728 450.56 450.56 0 91.62752-27.36128 176.86528-74.3424 248.0128l31.5392 94.6176a40.96 40.96 0 0 1-46.8992 53.10464l-109.32224-21.87264A448.47104 448.47104 0 0 1 512 962.56C263.168 962.56 61.44 760.832 61.44 512S263.168 61.44 512 61.44z m0 61.44C297.10336 122.88 122.88 297.10336 122.88 512s174.22336 389.12 389.12 389.12c75.42784 0 147.49696-21.44256 209.5104-61.1328l7.68-5.05856 21.25824-14.336 99.84 19.968-29.7984-89.47712 16.46592-24.94464A386.9696 386.9696 0 0 0 901.12 512c0-214.89664-174.22336-389.12-389.12-389.12zM276.48 440.32a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z m235.52 0a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z m235.52 0a71.68 71.68 0 1 1 0 143.36 71.68 71.68 0 0 1 0-143.36z" p-id="4831"></path></svg>
+                        回复
+                      </span>
+                  </div>
                 </div>
                 <!-- 回复区 -->
                 <div class="reply_area" style="margin-top:10px" :class="{showCommentArea:isShowCommentArea === item._id}">
@@ -70,13 +84,15 @@
                     <el-input v-model="content" type="textarea" style="resize:none" :maxlength='Number(100)'  placeholder="回复" :rows="4" />
                   </div>
                   <div class="reply_area_active">
-                    <Emoji>
+                    <Emoji @changeText="(char)=>{ content+=char }">
                       <template #reference>
-                        <span class='cion_img'><SmileOutlined style="margin-right:5px" />表情</span>
+                        <span class='cion_img'>
+                          <svg t="1684227537190" class="icon" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2456" width="200" height="200"><path d="M495.465 830.665c-187.138 0-264.948-168.222-268.193-175.401l62.966-28.307c2.486 5.49 62.207 134.667 205.194 134.667 153.067-1.795 211.302-129.213 213.685-134.633l63.103 27.996c-3.141 7.077-79.054 173.364-273.13 175.643l-3.625 0.034zM500.16 991.221c-256.974 0-466.034-209.060-466.034-466.034s209.060-466.034 466.034-466.034 466.034 209.060 466.034 466.034-209.060 466.034-466.034 466.034zM500.16 128.196c-218.897 0-396.991 178.094-396.991 396.991s178.094 396.991 396.991 396.991 396.991-178.094 396.991-396.991-178.059-396.991-396.991-396.991zM311.088 444.27c0 29.689 24.062 53.818 53.818 53.818s53.818-24.096 53.818-53.818-24.062-53.818-53.818-53.818-53.818 24.096-53.818 53.818zM580.765 444.27c0 29.689 24.062 53.818 53.818 53.818s53.818-24.096 53.818-53.818-24.062-53.818-53.818-53.818-53.818 24.096-53.818 53.818z" fill="#a0a0a0" p-id="2457"></path></svg>
+                          表情</span>
                       </template>
                     </Emoji>
-                    <div class="reply_area_btn" @click="reply(commentItem._id, item.userName, item._id)" style="right:70px">发布</div>
-                    <div class="reply_area_btn" @click="noShowCommentArea()">取消</div>
+                    <el-button class="reply_area_btn" color="#ec7259" style="right:70px" @click="reply(commentItem._id, item.userName, item._id)">发布</el-button>
+                    <el-button class="reply_area_btn" @click="noShowCommentArea()">取消</el-button>
                   </div>
                 </div>
             </div>
@@ -93,12 +109,12 @@
 
 <script setup>
 import { ref,reactive,defineProps,onMounted, getCurrentInstance, watch } from 'vue'
-import  {SmileOutlined,PictureOutlined} from '@ant-design/icons-vue'
 import dayjs from 'dayjs'
 import Emoji from "@/components/Emoji/index.vue";
+import api from '@/api/index'
+import VueCookies from 'vue-cookies'
 
 const emit = defineEmits(['getMessages'])
-const api = getCurrentInstance()?.appContext.config.globalProperties.$api
 const content = ref('') //回复内容
 const isShowCommentArea = ref('')
 const initSuccess = ref(false)
@@ -123,6 +139,7 @@ onMounted(() => {
   commentItemSub.value = props.commentItem.sub.length ? [props.commentItem.sub[0]] : []
 })
 const commentItemSub = ref([]) //回复列表
+
 const initSlot = () => {
   setTimeout(()=> {
     initSuccess.value = true
@@ -134,13 +151,27 @@ const reply = async (_id, userName, reviewerId) => {
     content: content.value,
     createTime: dayjs(new Date().getTime()).format('YYYY-MM-DD'),
     isMessage: props.isMessage,
-    parentId: _id, //父级id
+    parentId: _id, //父级留言或评论id
     reviewerUserName: userName, //被回复人用户名
     reviewerId //被回复人id
   })
   content.value = ''
   isShowCommentArea.value = ""
   emit('getMessages')
+}
+
+// 点赞留言或评论
+const giveALike = async (_id, isAddLikePeople, commentItem) => {
+  if (isAddLikePeople) {
+    commentItem.likePeople.push(VueCookies.get('user'))
+  } else {
+    const index = commentItem.likePeople.indexOf(VueCookies.get('user'))
+    commentItem.likePeople.splice(index, 1)
+  }
+  await api.blog.giveMessageALike({
+    isAddLikePeople,
+    parentId: _id
+  })
 }
 // 显示回复框
 const showCommentArea = (_id) => {
@@ -223,7 +254,7 @@ onMounted(()=>{
             }
         }
         .users_comment{
-            margin-top: 10px;
+            margin-top: 20px;
             border-bottom: 1px solid #e9e9e9;
             padding-bottom: 5px;
             .users_comment_top{
@@ -253,6 +284,8 @@ onMounted(()=>{
             }
         }
         .item_active{
+          position: relative;
+          bottom: -10px;
             .spans{
                 height: 30px;
                 line-height: 30px;
@@ -296,17 +329,28 @@ onMounted(()=>{
                     color: #b0b0b0;
                     cursor: pointer;
                     transition: 0.3s;
-                    
+                    font-size: 14px;
+                    svg {
+                      width: 20px;
+                      height: 14px;
+                      position: relative;
+                      top: 2px;
+                      path {
+                        transition: 0.3s;
+                      }
+                    }
                 }
                 .cion_img:hover{
-                    color:#303133 ;
+                  color:#303133 ;
+                }
+                .cion_img:hover path {
+                  fill: #303133;
                 }
                 .reply_area_btn{
                     width: 54px;
                     height: 100%;
                     text-align: center;
                     line-height: 28px;
-                    background:#ec7259 ;
                     color: white;
                     border-radius: 50px;
                     position: absolute;

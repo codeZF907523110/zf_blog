@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2022-02-23 10:24:34
- * @LastEditTime: 2023-05-16 16:43:42
+ * @LastEditTime: 2023-05-25 19:55:33
  * @LastEditors: zhangfeng16 907523110@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /zf_blog/zfblog/src/pages/WriteArticle/components/saveDraft.vue
@@ -197,16 +197,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="cover">
-          <div class="texttitle" style="">发布形式:</div>
-          <div class="coverradio">
-            <a-radio-group v-model:value="jurisdiction">
-              <a-radio :value="1">公开</a-radio>
-              <a-radio :value="2">私密</a-radio>
-              <a-radio :value="3">粉丝可见</a-radio>
-            </a-radio-group>
-          </div>
-        </div> -->
       </div>
       <template #footer>
         <span class="dialog-footer">
@@ -220,20 +210,22 @@
 </template>
 
 <script setup>
-import { reactive, ref, getCurrentInstance } from "vue"
+import { reactive, ref } from "vue"
 import dayjs from 'dayjs'
+import api from '@/api/index'
 const props = defineProps({
   text: {
     type: String,
     default: ''
+  },
+  baseForm: {
+    type: Object,
+    default: () => {}
   }
 })
 const dialogVisible = ref(false)
-const isOpenTitle = ref(true)
 const isShowTitles = ref(false)
 const itemIndex = ref(0)
-const articleType = ref(1)
-const jurisdiction = ref(1)
 const form = reactive({
   title: '', //标题
   coverUrl: '', //封面url
@@ -288,9 +280,6 @@ const labelMenus = [
 const addLabelText = ref('') //添加标签input
 
 const classification = ref(["技术专区", "我的随笔", "兴趣爱好"])
-// let checkLabels = ref([])
-const api = getCurrentInstance()?.appContext.config.globalProperties.$api
-
 // 上传图片
 const uploadPictures = async () => {
   const file = document.getElementById('file').files[0]

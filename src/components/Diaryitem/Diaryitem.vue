@@ -28,11 +28,10 @@
 </template>
 
 <script setup>
-import { ref,reactive,onMounted,defineProps} from 'vue';
+import { ref,onMounted,defineProps} from 'vue';
 import { useRouter } from 'vue-router'
 const router = useRouter();
 const isLike=ref(false)
-const isShowText=ref(false)
 let initSuccess=ref(false)
 const props=defineProps({
     time: {

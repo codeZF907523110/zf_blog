@@ -17,8 +17,8 @@ export const uploadPictures = post('/api/blog/uploadPictures')
 // 条件查询博客
 export const getAllBlog = JPost('/api/blog/getAllBlog')
 
-// 点赞
-export const giveALike = JPost('/api/blog/giveALike')
+// 点赞博客
+export const giveBlogALike = JPost('/api/blog/giveALike')
 
 // 增加阅读量
 export const addOpenNum = JPost('/api/blog/addOpenNum')
@@ -34,3 +34,6 @@ export const setMessage = JPost('/api/message/setMessage')
 
 // 获取留言或评论
 export const getMessages = JPost('/api/message/getMessages')
+
+// 点赞留言或评论
+export const giveMessageALike = JPost('/api/message/giveALike')

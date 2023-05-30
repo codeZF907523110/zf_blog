@@ -1,23 +1,23 @@
 <template>
-    <div class='myinfos'>
-        <video class='myinfoback' src="https://img-baofun.zhhainiao.com/market/133/b99b51e6c7945c9d5565861d397451cb_preview.mp4" autoplay muted loop></video>
-        <div class='myinfo'>
-            <div class='headportrait'>
+    <div class='my_infos'>
+        <video class='my_info_back' src="https://img-baofun.zhhainiao.com/market/133/b99b51e6c7945c9d5565861d397451cb_preview.mp4" autoplay muted loop></video>
+        <div class='my_info'>
+            <div class='head_portrait'>
                 <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F10230779285%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639054216&t=06224b63c49bd5b2a8e08af37c645b7c" alt="">
             </div>
-            <div class='myname'><span>{{ userInfo.userName }}</span> </div>
-            <div class='myspeak'>{{ userInfo.signature }}</div>
-            <div class='callme'>关注我</div>
-            <div class='alticlactive'>
-                <div class='activeitem'>
+            <div class='myName'><span>{{ userInfo.userName }}</span> </div>
+            <div class='mySpeak'>{{ userInfo.signature }}</div>
+            <div class='call_me'>关注我</div>
+            <div class='article_active'>
+                <div class='active_item'>
                     <span>{{ userInfo.articlesNumber }}</span>
                     <div>文章</div>
                 </div>
-                <div class='activeitem'>
+                <div class='active_item'>
                     <span>{{ userInfo.messageNumber }}</span>
                     <div>留言</div>
                 </div>
-                <div class='activeitem'>
+                <div class='active_item'>
                     <span>10000</span>
                     <div>浏览</div>
                 </div>
@@ -37,17 +37,13 @@ onMounted(() => {
 </script>
 
 <style lang='scss'>
-    .myinfos{
+    .my_infos{
         width: 100%;
         height: 380px;
-        // border:1px solid red;    
-        border:1px solid #EBEEF5;
-        // position: sticky;
-        // top: 60px;
         background: white;
         position: relative;
-        animation: showmyinfos 0.5s forwards;
-        .myinfoback{
+        animation: show_my_infos 0.5s forwards;
+        .my_info_back{
             width: 100%;
             overflow: hidden;
             // border:1px solid red;
@@ -55,10 +51,10 @@ onMounted(() => {
                 width: 100%;
             }
         }
-    .myinfo{
+    .my_info{
         position: relative;
         
-        .headportrait{
+        .head_portrait{
             width: 80px;
             height: 80px;
             border-radius: 50%;
@@ -76,36 +72,36 @@ onMounted(() => {
                 transition: 0.3s;
             }
         }
-        .headportrait:hover{
+        .head_portrait:hover{
             width: 90px;
             height: 90px;
             
         }
-        .headportrait:hover img{
+        .head_portrait:hover img{
             transform: rotate(360deg);
         }
-        .myname{
-            padding-top: 35px;
+        .myName{
+            padding-top: 50px;
             font-size: 18px;
             color: #a0a0a0;
             transition: 0.5s;
             width: 50px;
             margin: 0 auto;
         }
-        .myname:hover{
+        .myName:hover{
             transform: scale(1.1);
             color: black;
             transition: 0.5s;
             
         }
-        .myspeak{
+        .mySpeak{
             margin-top:3px;
         }
-        .myname,.myspeak{
+        .myName,.mySpeak{
             text-align: center;
             cursor: pointer;
         }
-        .callme{
+        .call_me{
             font-size: 16px;
             width: 200px;
             height: 40px;
@@ -120,17 +116,17 @@ onMounted(() => {
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
             transition: 0.3s;
         }
-        .callme:hover{
+        .call_me:hover{
             background: black;
             transition: 0.3s;
             color: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
         }
-        .alticlactive{
+        .article_active{
             width: 100%;
             display: flex;
             justify-content: space-around;
-            .activeitem{
+            .active_item{
                 width: 50px;
                 text-align: center;
                 cursor: pointer;
@@ -143,7 +139,7 @@ onMounted(() => {
     }
 
     }
-    @keyframes showmyinfos {
+    @keyframes show_my_infos {
         0%{
             left: 100px;
             top: -100px;

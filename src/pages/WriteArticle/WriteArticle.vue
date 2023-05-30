@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUpdated, reactive, ref, watch } from '@vue/runtime-core'
+import { onMounted, reactive, ref } from '@vue/runtime-core'
 import E from 'wangeditor'
 import SaveArticle from './components/saveArticle.vue';
 
