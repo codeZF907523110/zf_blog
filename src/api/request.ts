@@ -3,8 +3,8 @@ import VueCookies from 'vue-cookies'
 import qs from 'qs'
 import { ElNotification } from 'element-plus'
 let config = {
-  baseURL: 'http://zfblog.top',
-  // baseURL: 'http://localhost:3006',
+  // baseURL: 'http://zfblog.top',
+  baseURL: 'http://localhost:3006',
   timeout: 120 * 1000, // Timeout
   withCredentials: true, //自动添加cookie
   headers: {
