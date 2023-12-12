@@ -28,21 +28,23 @@
           </div>
       </div>
       <div class="write_buttons">
-        <div class="write_button_login" v-if="!isLogin" @click="openLoginBox" style="">
+        <!-- {{ userInfo }}啦啦啦啦啦 -->
+        <div class="write_button_login" v-if="!userInfo.user" @click="openLoginBox" style="">
             登录/注册
         </div>
+        <!-- <div v-else>{{ userInfo }}</div> -->
         <el-dropdown v-else style="width:40px;margin-left:50px">
             <div class="userTX el-dropdown-link">
-              <img :src="VueCookies.get('icon')" alt="">
+              <img :src="userInfo.icon" alt="">
             </div>
             <template #dropdown>
-            <el-dropdown-menu class="el-dropdown-menu">
-              <div class="user_name">{{ VueCookies.get('user') }}</div>
-              <!-- <el-dropdown-item>个人中心</el-dropdown-item> -->
-              <el-dropdown-item @click="dialogVisible = true">写文章</el-dropdown-item>
-              <el-dropdown-item v-if="route.fullPath.includes('/display/articlecontent')" @click="goEditPage">编辑文章</el-dropdown-item>
-              <el-dropdown-item @click="logOut">退出</el-dropdown-item>
-            </el-dropdown-menu>
+              <el-dropdown-menu class="el-dropdown-menu">
+                <div class="user_name">{{ userInfo.user }}</div>
+                <el-dropdown-item>个人中心</el-dropdown-item>
+                <el-dropdown-item @click="dialogVisible = true">写文章</el-dropdown-item>
+                <el-dropdown-item v-if="route.fullPath.includes('/display/articlecontent')" @click="goEditPage">编辑文章</el-dropdown-item>
+                <el-dropdown-item @click="logOut">退出</el-dropdown-item>
+              </el-dropdown-menu>
             </template>
         </el-dropdown>
       </div>
@@ -87,6 +89,7 @@ import login from '@/components/Login/index.vue'
 import api from '@/api/index'
 const router = useRouter();
 const route = useRoute()
+const userInfo = reactive({})
 import $store from "@/store/index";
 let isHideHeader=ref(false)
 let isLogin:Ref<boolean> = ref(VueCookies.get('user') || VueCookies.get('icon'))
@@ -185,6 +188,12 @@ const headersRouter = async (item) => {
   router.push(item.path)
 }
 onMounted(()=>{
+  const user =  VueCookies.get('user')
+  const icon = VueCookies.get('icon')
+  user ? userInfo.user = user : ''
+  icon ? userInfo.icon = icon : ''
+  console.log(userInfo, 'userInfo')
+  
   window.addEventListener('scroll',()=>{
     var scrotop=document.documentElement.scrollTop - Math.ceil(document.documentElement.scrollTop / 10);
     if(scrotop>=80){
