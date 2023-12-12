@@ -30,8 +30,8 @@ jobs:
       - name: npm install
         run: npm install
       # 打包
-      - name: npm build
-        run: npm run build
+      - name: npm build:dev
+        run: npm run build:dev
       # 部署到服务器
       - name: deploy
         uses: easingthemes/ssh-deploy@v2.1.1
