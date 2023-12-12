@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --mode development",
     "preview": "vite --mode production",
-    "build:dev": "vite build --mode development;scp -r dist/* root@82.157.237.22:~/www",
+    "build:dev": "vite build",
     "build:prod": "vite build --mode production",
     "serve": "vite preview"
   },

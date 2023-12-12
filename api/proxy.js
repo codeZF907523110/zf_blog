@@ -1,3 +1,4 @@
+// --mode development;scp -r dist/* root@82.157.237.22:~/www
 /*
  * @Author: zhangfeng16 907523110@qq.com
  * @Date: 2023-03-16 15:50:48
