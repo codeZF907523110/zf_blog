@@ -27,7 +27,7 @@ import { USER_INFO } from "@/plugins/getUserInfo.ts"
 const userInfo = ref({});
 
 onMounted(async () => {
-  userInfo.value = USER_INFO();
+  userInfo.value = await USER_INFO();
 });
 </script>
 

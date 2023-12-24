@@ -10,11 +10,18 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 const path = require('path')
 import { resolve } from 'path' // 主要用于alias文件路径别名
+import topLevelAwait from 'vite-plugin-top-level-await'
 // https://vitejs.dev/config/
 export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   return defineConfig({
-    plugins: [vue()],
+    plugins: [
+      vue(),
+      topLevelAwait({
+        promiseExportName: '__tla',
+        promiseImportName: i => `__tla_${i}`
+      })
+    ],
     outDir: 'dist',
     build: {
       chunkSizeWarningLimit: 3000
