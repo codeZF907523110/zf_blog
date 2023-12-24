@@ -2,7 +2,7 @@
     <div class='my_infos'>
         <!-- <video class='my_info_back' src="https://img-baofun.zhhainiao.com/market/133/b99b51e6c7945c9d5565861d397451cb_preview.mp4" autoplay muted loop></video> -->
         <div class="my_info_back">
-            <img  src="@/assets/img/back.jpg" />
+            <img  src="@/assets/img/back.png" />
         </div>
         <div class='my_info'>
             <div class='head_portrait'>
@@ -51,7 +51,7 @@ onMounted(async () => {
         .my_info_back{
             width: 100%;
             overflow: hidden;
-            height: 150px;
+            // height: 150px;
             display: flex;
             align-items: center;
             img{
