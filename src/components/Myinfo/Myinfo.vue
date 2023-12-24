@@ -1,6 +1,9 @@
 <template>
     <div class='my_infos'>
-        <video class='my_info_back' src="https://img-baofun.zhhainiao.com/market/133/b99b51e6c7945c9d5565861d397451cb_preview.mp4" autoplay muted loop></video>
+        <!-- <video class='my_info_back' src="https://img-baofun.zhhainiao.com/market/133/b99b51e6c7945c9d5565861d397451cb_preview.mp4" autoplay muted loop></video> -->
+        <div class="my_info_back">
+            <img  src="@/assets/img/back.jpg" />
+        </div>
         <div class='my_info'>
             <div class='head_portrait'>
                 <img src="@/assets/img/defaultImg.jpeg" alt="">
@@ -48,9 +51,12 @@ onMounted(async () => {
         .my_info_back{
             width: 100%;
             overflow: hidden;
-            // border:1px solid red;
+            height: 150px;
+            display: flex;
+            align-items: center;
             img{
                 width: 100%;
+                // height: 100%;
             }
         }
     .my_info{
