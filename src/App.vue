@@ -8,7 +8,7 @@
 -->
 <template>
   <div class='homeback'>
-      <!-- <img src="./assets/img/homeback.jpg" alt=""> -->
+      <img src="./assets/img/homeback.jpg" alt="">
   </div>
   <router-view v-slot="{ Component }">
     <keep-alive>

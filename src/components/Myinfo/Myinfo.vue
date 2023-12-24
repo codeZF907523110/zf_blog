@@ -3,7 +3,7 @@
         <video class='my_info_back' src="https://img-baofun.zhhainiao.com/market/133/b99b51e6c7945c9d5565861d397451cb_preview.mp4" autoplay muted loop></video>
         <div class='my_info'>
             <div class='head_portrait'>
-                <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F10230779285%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639054216&t=06224b63c49bd5b2a8e08af37c645b7c" alt="">
+                <img src="@/assets/img/defaultImg.jpeg" alt="">
             </div>
             <div class='myName'><span>{{ userInfo.userName }}</span> </div>
             <div class='mySpeak'>{{ userInfo.signature }}</div>
@@ -27,13 +27,15 @@
 </template>
 
 <script setup>
-import { getUserInfo } from "@/plugins/getUserInfo"
-import { onMounted, reactive } from "vue"
+// import { getUserInfo } from "@/plugins/getUserInfo"
+import { onMounted, reactive, ref } from "vue"
+import { USER_INFO } from "@/plugins/getUserInfo.ts"
 
-const userInfo = reactive({})
-onMounted(() => {
-  Object.assign(userInfo, getUserInfo())
-})
+const userInfo = ref({})
+
+onMounted(async () => {
+  userInfo.value = USER_INFO()
+});
 </script>
 
 <style lang='scss'>

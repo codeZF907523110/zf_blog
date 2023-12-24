@@ -21,7 +21,8 @@
     height: 240px;
     background: rgb(48, 49, 51);
     margin-top: 20px;
-    padding: 100px;
+    padding: 10px;
+    box-sizing: border-box;
     a {
       color: white;
     }

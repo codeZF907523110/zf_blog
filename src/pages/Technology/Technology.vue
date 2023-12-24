@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class='all_alticle'>
-      <div class='list_item'>
+      <div class='all_list_item'>
         <div v-if="blogList.length">
           <Listitem
             v-for="(item,index) in blogList"

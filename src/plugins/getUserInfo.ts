@@ -8,17 +8,14 @@
  */
 import api from '@/api/index'
 
-export const getUserInfo = () => {
-  let userInfo = {}
-  const info = sessionStorage.getItem('userInfo')
-  if (info) {
-    userInfo = JSON.parse(info)
-    return userInfo
-  }
-  api.userInfo.getUserInfo({}).then(({ result }) => {
-    // TODO 增加条件判断用来存储sessionStorage-userInfo
-    userInfo = result
-    sessionStorage.setItem('userInfo', JSON.stringify(result))
-    return userInfo
-  })
+const getUserInfo = async () => {
+  try {
+    const { result } = await api.userInfo.getUserInfo({})  
+    return () => {
+      return result
+    }
+  } catch (error) {
+  }  
 }
+const USER_INFO = await getUserInfo()
+export { USER_INFO }

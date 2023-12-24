@@ -37,3 +37,6 @@ export const getMessages = JPost('/api/message/getMessages')
 
 // 点赞留言或评论
 export const giveMessageALike = JPost('/api/message/giveALike')
+
+// 保存当前编辑的博客
+export const saveEditBlog = JPost('/api/blog/editBlog')

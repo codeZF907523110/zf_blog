@@ -9,19 +9,42 @@
 <template>
   <div style="position: relative; margin: 0 auto">
     <div class="settitlebottom">
-      <div class="titleboben">保存草稿</div>
-      <div class="titleboben" @click="dialogVisible = true">发布博客</div>
+      <el-button round>保存草稿</el-button>
+      <!-- <el-button
+        v-if="route.query.id"
+        type="primary"
+        round
+        style="margin-right: 20px"
+        @click="saveEdit"
+        >保存</el-button
+      > -->
+      <el-button
+        type="danger"
+        style="margin-right: 20px"
+        @click="openDialogVisible"
+        round
+        >{{ route.query.id ? "保存博客" : "发布博客" }}</el-button
+      >
     </div>
     <el-dialog v-model="dialogVisible" title="填写信息">
       <div class="titlecenter">
         <div class="inputtitle">
-          <el-input v-model="form.title" :bordered="false" placeholder="请输入文章标题(5~100个字)" />
+          <el-input
+            v-model="form.title"
+            :bordered="false"
+            placeholder="请输入文章标题(5~100个字)"
+          />
         </div>
         <div class="cover">
           <div class="texttitle" style="">封面&摘要:</div>
           <div class="addimgdiv">
             <div class="addimg">
-              <img class="cover_url" v-if="form.coverUrl" :src="form.coverUrl" alt="">
+              <img
+                class="cover_url"
+                v-if="form.coverUrl"
+                :src="form.coverUrl"
+                alt=""
+              />
               <svg
                 v-else
                 t="1642071975891"
@@ -44,7 +67,12 @@
                   fill="#bfbfbf"
                 ></path>
               </svg>
-              <input class="upload_pictures" id="file" type="file" @change="uploadPictures" />
+              <input
+                class="upload_pictures"
+                id="file"
+                type="file"
+                @change="uploadPictures"
+              />
             </div>
             <div style="margin-top: 8px; font-size: 12px; color: #999aaa">
               优质的封面有利于推介
@@ -176,10 +204,7 @@
               <el-radio label="转载" />
               <el-radio label="翻译" />
             </el-radio-group>
-            <div
-              style="margin-top: 10px"
-              v-show="form.articleType !== '原创'"
-            >
+            <div style="margin-top: 10px" v-show="form.articleType !== '原创'">
               <input
                 style="
                   height: 32px;
@@ -201,8 +226,7 @@
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false">取消</el-button>
-          <el-button type="primary" @click="release">确定</el-button
-          >
+          <el-button type="primary" @click="confirm">确定</el-button>
         </span>
       </template>
     </el-dialog>
@@ -210,32 +234,36 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue"
-import dayjs from 'dayjs'
-import api from '@/api/index'
+import { reactive, ref } from "vue";
+import dayjs from "dayjs";
+import api from "@/api/index";
+import { useRoute } from "vue-router";
+import { ElNotification } from "element-plus";
+
+const route = useRoute();
 const props = defineProps({
   text: {
     type: String,
-    default: ''
+    default: "",
   },
   baseForm: {
     type: Object,
-    default: () => {}
-  }
-})
-const dialogVisible = ref(false)
-const isShowTitles = ref(false)
-const itemIndex = ref(0)
+    default: () => {},
+  },
+});
+const dialogVisible = ref(false);
+const isShowTitles = ref(false);
+const itemIndex = ref(0);
 const form = reactive({
-  title: '', //标题
-  coverUrl: '', //封面url
-  abstract: '',// 摘要
-  classifiedColumn: '技术专区', // 分类专栏
+  title: "", //标题
+  coverUrl: "", //封面url
+  abstract: "", // 摘要
+  classifiedColumn: "技术专区", // 分类专栏
   labels: [], //标签
-  articleType: '原创', //文章类型
-  releaseTime: '' //发布时间
-})
-const labelItems = ref([])
+  articleType: "原创", //文章类型
+  releaseTime: "", //发布时间
+});
+const labelItems = ref([]);
 const labelMenus = [
   "推介",
   "Python",
@@ -276,60 +304,96 @@ const labelMenus = [
   "产品/运营",
   "设计",
   "其它",
-]
-const addLabelText = ref('') //添加标签input
+];
+const addLabelText = ref(""); //添加标签input
 
-const classification = ref(["技术专区", "我的随笔", "兴趣爱好"])
+const classification = ref(["技术专区", "我的随笔", "兴趣爱好"]);
+
+const openDialogVisible = async () => {
+  dialogVisible.value = true
+  const { result  } = await api.blog.getAllBlog({
+    _id: route.query.id,
+  })
+  form.title = result[0].title
+  form.coverUrl = result[0].coverUrl
+  form.abstract = result[0].abstract
+  form.classifiedColumn = result[0].classifiedColumn
+  form.labels = result[0].labels
+  form.articleType = result[0].articleType
+}
+
 // 上传图片
 const uploadPictures = async () => {
-  const file = document.getElementById('file').files[0]
-  const formDate = new FormData()
-  formDate.append('file', file)
-  const { coverUrl } = await api.blog.uploadPictures(formDate)
-  form.coverUrl = coverUrl
-}
+  const file = document.getElementById("file").files[0];
+  const formDate = new FormData();
+  formDate.append("file", file);
+  const { coverUrl } = await api.blog.uploadPictures(formDate);
+  form.coverUrl = coverUrl;
+  ElNotification.success("封面上传成功");
+};
+
+const saveEdit = async () => {
+  form.releaseTime = dayjs(new Date().getTime()).format("YYYY-MM-DD hh:mm:ss");
+  await api.blog.saveEditBlog({
+    ...form,
+    _id: route.query.id,
+    text: props.text,
+  });
+};
+
 // 发布
 const release = async () => {
-  form.releaseTime = dayjs(new Date().getTime()).format('YYYY-MM-DD hh:mm:ss')
+  form.releaseTime = dayjs(new Date().getTime()).format("YYYY-MM-DD hh:mm:ss");
   await api.blog.saveBlog({
     ...form,
-    text: props.text
-  })
+    text: props.text,
+  });
+  ElNotification.success("发布成功");
+};
+
+const confirm = () => {
+  const isEdit = route.query.id
+  if (isEdit) {
+    saveEdit()
+  } else {
+    release()
+  }
 }
 
 // 添加标签
 const addLabel = async () => {
   await api.blog.addLabel({
-    name: addLabelText.value
-  })
-  getLabels()
-}
+    name: addLabelText.value,
+  });
+  ElNotification.success("标签添加成功");
+  getLabels();
+};
 
 // 获取标签
 const getLabels = async (parentLevel) => {
-  const { result } = await api.blog.getLabels({ parentLevel })
-  labelItems.value = result
-}
+  const { result } = await api.blog.getLabels({ parentLevel });
+  labelItems.value = result;
+};
 
 // 显示添加标签弹窗
 const openSetLabel = () => {
-  getLabels()
-  isShowTitles.value = true
-}
+  getLabels();
+  isShowTitles.value = true;
+};
 const changeItemIndex = (index) => {
   itemIndex.value = index;
-}
+};
 
 const addCheckItem = (item) => {
   if (!form.labels.includes(item)) {
     if (form.labels.length < 5) {
-      form.labels.push(item)
+      form.labels.push(item);
     }
   }
-}
+};
 const removeItem = (index) => {
-  form.labels.splice(index, 1)
-}
+  form.labels.splice(index, 1);
+};
 </script>
 
 <style lang="scss">
@@ -378,7 +442,7 @@ const removeItem = (index) => {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%)
+          transform: translate(-50%, -50%);
         }
         .upload_pictures {
           width: 100%;
@@ -600,46 +664,12 @@ const removeItem = (index) => {
 .settitlebottom {
   height: 64px;
   width: 100%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   border-top: 1px solid #e8e8e8;
   background-color: #fff;
-
-  .titleboben {
-    width: 100px;
-    height: 35px;
-    border: 1px solid #555666;
-    color: #555666;
-    border-radius: 50px;
-    text-align: center;
-    line-height: 35px;
-    cursor: pointer;
-    float: left;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .titleboben:first-child {
-    right: 130px;
-  }
-  .titleboben:first-child:hover {
-    border: 1px solid #000;
-    color: #000;
-  }
-  .titleboben:last-child {
-    right: 10px;
-    color: #fff;
-    border: none;
-    white-space: nowrap;
-    background: #fc5531;
-  }
-  .titleboben:last-child:hover {
-    background: #fc1944;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 50px;
 }
 .el-overlay {
   z-index: 100000 !important;

@@ -38,10 +38,16 @@ const routes = [
         },
         {
           path:'articleContent',
+          meta: {
+              title: '技术专区'
+          },
           component: () => import('@pages/ArticleContent/ArticleContent.vue')
         },
         {
           path:'myDiary',
+          meta: {
+
+          },
           component: () => import('@pages/MyDiary/MyDiary.vue')
         },
         {

@@ -7,12 +7,11 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  <div class='display'
+  <div
+    class='display'
     v-loading.fullscreen.lock="$store.state.isloading"
-    element-loading-text="Loading..."
-    :element-loading-spinner="svg"
-    element-loading-svg-view-box="-10, -10, 50, 50"
-    element-loading-background="rgba(122, 122, 122, 0.8)"
+    element-loading-text="服务器不太给力啊。。。"
+    style="color: #000;"
   >
     <Header></Header>
     <!-- <Loading :class="{diasplayload:!$store.state.isloading}"></Loading> -->
@@ -21,7 +20,7 @@
           <div class='thisrouter'>
               <el-breadcrumb :separator-icon="ArrowRight">
                   <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                  <el-breadcrumb-item>{{route.meta.title  }}</el-breadcrumb-item>
+                  <el-breadcrumb-item>{{ route.meta.title  }}</el-breadcrumb-item>
               </el-breadcrumb>
           </div>
           <router-view v-slot="{ Component }">

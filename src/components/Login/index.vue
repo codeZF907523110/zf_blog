@@ -54,9 +54,10 @@ const wxOrPhone: Ref<number> = ref(0)
 
 // github登录
 const gitHubLogin = async () => {
-const res = await api.login.gitHubLogin({
-  path: window.location.href
-})
+  const res = await api.login.gitHubLogin({
+    path: window.location.href
+  })
+  
   window.location.href = res
 }
 
@@ -89,6 +90,7 @@ const closeLogin = () => {
 }
 .login_content {
   .er_wei_code {
+    display: none;
     width: 180px;
     margin: 20px auto 10px auto;
     text-align: center;

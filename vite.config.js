@@ -55,7 +55,11 @@ export default ({ mode }) => {
       port: 5000,
       host: '0.0.0.0',
       https: false,
-      hmr: true,
+      // hmr: true,
+      hmr: {
+        protocol: 'ws',
+        host: '127.0.0.1'
+      }
       // proxy: {
       //   '/api': {
       //       target: 'http://82.157.237.22:3006', //替换的服务端地址
