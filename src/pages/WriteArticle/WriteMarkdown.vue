@@ -50,6 +50,7 @@ onMounted(() => {
 </script>
 <style lang="scss">
 .writeMarkdown {
+  width: 100vw;
   height: 100vh;
   .md-editor {
     height: calc(100% - 65px);

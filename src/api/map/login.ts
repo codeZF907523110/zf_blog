@@ -5,3 +5,6 @@ export const gitHubLogin = get('/api/github/login')
 
 // 登出
 export const logOut = get('/api/logOut')
+
+// 获取是否有admin权限
+export const getIsAdmin = get('/api/getIsAdmin')

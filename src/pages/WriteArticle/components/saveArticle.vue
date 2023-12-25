@@ -311,6 +311,7 @@ const classification = ref(["技术专区", "我的随笔", "兴趣爱好"]);
 
 const openDialogVisible = async () => {
   dialogVisible.value = true
+  if (!route.query.id) returns
   const { result  } = await api.blog.getAllBlog({
     _id: route.query.id,
   })
@@ -339,6 +340,7 @@ const saveEdit = async () => {
     _id: route.query.id,
     text: props.text,
   });
+  ElNotification.success("保存成功");
 };
 
 // 发布
