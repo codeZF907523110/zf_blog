@@ -311,7 +311,7 @@ const classification = ref(["技术专区", "我的随笔", "兴趣爱好"]);
 
 const openDialogVisible = async () => {
   dialogVisible.value = true
-  if (!route.query.id) returns
+  if (!route.query.id) return
   const { result  } = await api.blog.getAllBlog({
     _id: route.query.id,
   })
