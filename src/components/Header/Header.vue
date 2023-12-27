@@ -64,7 +64,7 @@
           <template #dropdown>
             <el-dropdown-menu class="el-dropdown-menu">
               <div class="user_name">{{ userInfo.user }}</div>
-              <el-dropdown-item>个人中心</el-dropdown-item>
+              <!-- <el-dropdown-item>个人中心</el-dropdown-item> -->
               <el-dropdown-item v-if="isAdmin" @click="dialogVisible = true"
                 >写文章</el-dropdown-item
               >
@@ -75,7 +75,7 @@
                 @click="goEditPage"
                 >编辑文章</el-dropdown-item
               >
-              <el-dropdown-item @click="logOut">退出</el-dropdown-item>
+              <el-dropdown-item @click="logOut">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>

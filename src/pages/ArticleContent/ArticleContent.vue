@@ -39,14 +39,14 @@
           <span>&nbsp;&nbsp;阅读 {{ blogItem.openNum }}</span>
         </div>
       </div>
-      <div class="contentcover">
+      <div class="contentcover" v-if="blogItem.coverUrl">
         <img
           class="contentcoverimg"
           :src="blogItem.coverUrl"
           alt=""
         />
+        <div class="covertext">image</div>
       </div>
-      <div class="covertext">image</div>
       <md-editor
         :previewOnly="true"
         class="md-editor"

@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import App from './App.vue'
-import './index.css'
+import './index.scss'
 // import plugin from './plugins/index'
 // import Antd from 'ant-design-vue';
 // import 'ant-design-vue/dist/antd.css';
