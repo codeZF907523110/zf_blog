@@ -265,33 +265,17 @@
 <script setup>
 import MdEditor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
-import { useRouter, useRoute } from "vue-router"
-import { ref, reactive, onMounted, getCurrentInstance, onActivated } from "vue"
-import Newmessage from "@/components/Listitem/Newmessage.vue"
-import Lables from "@/components/Listitem/Lables.vue"
-import Siteinfo from "@/components/Listitem/Siteinfo.vue"
-import Comment from "@/components/Comment/Comment.vue"
+import { useRoute } from "vue-router"
+import { ref, reactive, onMounted } from "vue"
 import $store from "@/store/index"
 import MessageBoard from "../MessageBoard/MessageBoard.vue"
 import "./index.scss"
-import { marked } from "marked"
-// 代码高亮
-import hljs from 'highlight.js'
-// 自选代码高亮样式
-import 'highlight.js/scss/atom-one-dark.scss'
+
 import api from '@/api/index'
 import VueCookies from 'vue-cookies'
 
 import Axios from 'axios'
 
-// marked设置
-const rendererMD = new marked.Renderer();
-marked.setOptions({
-  highlight(code) {
-    return hljs.highlightAuto(code).value
-  },
-  renderer: rendererMD
-})
 const route = useRoute()
 
 const moneyBtn = ["￥2", "￥5", "￥10", "￥20", "￥50", "自定义"]
@@ -359,7 +343,7 @@ const getAllBlog = async () => {
   })
   Object.assign(blogItem, result[0])
   const content = await Axios.get(blogItem.blogUrl)
-  mdContent.value = marked(content.data)
+  mdContent.value = content.data
 }
 onMounted(async () => {
   window.scroll({

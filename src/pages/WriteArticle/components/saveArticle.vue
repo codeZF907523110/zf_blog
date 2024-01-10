@@ -334,7 +334,7 @@ const uploadPictures = async () => {
 };
 
 const saveEdit = async () => {
-  form.releaseTime = dayjs(new Date().getTime()).format("YYYY-MM-DD hh:mm:ss");
+  form.releaseTime = dayjs(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss");
   await api.blog.saveEditBlog({
     ...form,
     _id: route.query.id,
@@ -345,7 +345,7 @@ const saveEdit = async () => {
 
 // 发布
 const release = async () => {
-  form.releaseTime = dayjs(new Date().getTime()).format("YYYY-MM-DD hh:mm:ss");
+  form.releaseTime = dayjs(new Date().getTime()).format("YYYY-MM-DD HH:mm:ss");
   await api.blog.saveBlog({
     ...form,
     text: props.text,
