@@ -53,9 +53,7 @@ const emits = defineEmits(['closeLogin'])
 const wxOrPhone: Ref<number> = ref(0)
 
 const openQQLogin = () => {
-  QC.Login({
-    btnId:"QQLoginId"	//插入按钮的节点id
-  });
+  QC.Login.showPopup()
 }
 
 // github登录
