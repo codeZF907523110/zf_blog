@@ -53,7 +53,10 @@ const emits = defineEmits(['closeLogin'])
 const wxOrPhone: Ref<number> = ref(0)
 
 const openQQLogin = () => {
-  QC.Login.showPopup()
+  QC.Login.showPopup({
+    appId: '102086457',
+    redirectURI: 'http://zfblog.top/api/qq/callback'
+  })
 }
 
 // github登录

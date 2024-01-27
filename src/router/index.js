@@ -1,12 +1,5 @@
-/*
- * @Author: your name
- * @Date: 2022-02-22 10:16:06
- * @LastEditTime: 2023-05-29 10:58:29
- * @LastEditors: zhangfeng16 907523110@qq.com
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /zf_blog/zfblog/src/router/index.js
- */
-import { createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory} from "vue-router"
+import api from '../api/index'
 const routes = [
     {
       path:'/',
@@ -72,5 +65,16 @@ const routes = [
 const router = createRouter({
   history: createWebHistory('/'),
   routes,
- })
+})
+router.beforeEach(async (to, from, next) => {
+  console.log(to, 'to')
+  const regex = /#access_token=([^&]+)&expires_in=([^&]+)/
+  const match = to.hash.match(regex)
+  if (match) {
+    const access_token = match[1] // B58475245E7222D40FD7FCD682C6445B
+    const expires_in = match[2] // 7776000
+    await api.login.qqLogin({ access_token, expires_in })
+  }
+  next()
+})
 export default router;
