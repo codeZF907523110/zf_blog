@@ -74,6 +74,7 @@ router.beforeEach(async (to, from, next) => {
     const access_token = match[1] // B58475245E7222D40FD7FCD682C6445B
     const expires_in = match[2] // 7776000
     await api.login.qqLogin({ access_token, expires_in })
+    window.location.replace('http://www.zfblog.top/')
   }
   next()
 })
